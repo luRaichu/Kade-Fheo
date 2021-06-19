@@ -623,15 +623,15 @@ class PlayState extends MusicBeatState
 					var posY = 200;
 
 					var bg:FlxSprite = new FlxSprite(posX, posY);
-					bg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool','week6');
+					bg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool');
 					bg.animation.addByPrefix('idle', 'background 2', 24);
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.8, 0.9);
 					bg.scale.set(6, 6);
 					add(bg);
 
-					/* 
-							var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
+					
+							/*var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
 							bg.scale.set(6, 6);
 							// bg.setGraphicSize(Std.int(bg.width * 6));
 							// bg.updateHitbox();
@@ -644,14 +644,14 @@ class PlayState extends MusicBeatState
 							wiggleShit.effectType = WiggleEffectType.DREAMY;
 							wiggleShit.waveAmplitude = 0.01;
 							wiggleShit.waveFrequency = 60;
-							wiggleShit.waveSpeed = 0.8;
-						*/
+							wiggleShit.waveSpeed = 0.8;*/
+						
 
 					// bg.shader = wiggleShit.shader;
 					// fg.shader = wiggleShit.shader;
 
-					/* 
-								var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
+					 
+								/*var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
 								var waveSpriteFG = new FlxEffectSprite(fg, [waveEffectFG]);
 								// Using scale since setGraphicSize() doesnt work???
 								waveSprite.scale.set(6, 6);
@@ -665,8 +665,8 @@ class PlayState extends MusicBeatState
 								// waveSpriteFG.setGraphicSize(Std.int(fg.width * 6));
 								// waveSpriteFG.updateHitbox();
 								add(waveSprite);
-								add(waveSpriteFG);
-						*/
+								add(waveSpriteFG);*/
+						
 			}
 			case 'stage':
 				{
@@ -723,18 +723,18 @@ class PlayState extends MusicBeatState
 		                  add(stageCurtains);
 		          
               }
-              case 'food':
+              case 'house':
 		      {
 		                  defaultCamZoom = 0.9;
 		                  curStage = 'house';
-		                  var bg:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('bgFHEOoutside'));
+		                  var bg:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/bgFHEOoutside'));
 		                  bg.setGraphicSize(1980, 1200);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
 		                  bg.active = false;
 		                  add(bg);
 
-		                  var walls:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('bgFHEO'));
+		                  var walls:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('fheo/bgFHEO'));
 		                  //walls.setGraphicSize(Std.int(walls.width * 1.1));
 		                  walls.setGraphicSize(1980, 1200);
 		                  walls.updateHitbox();
@@ -743,18 +743,18 @@ class PlayState extends MusicBeatState
 		                  walls.active = false;
 		                  add(walls);
 		          }
-              case 'loiter':
+              case 'sunset':
 		      {
 		                  defaultCamZoom = 0.9;
 		                  curStage = 'sunset';
-		                  var bg:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('bgFHEOsunset'));
+		                  var bg:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/bgFHEOsunset'));
 		                  bg.setGraphicSize(1980, 1200);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
 		                  bg.active = false;
 		                  add(bg);
 
-		                  var walls:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('bgFHEO'));
+		                  var walls:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('fheo/bgFHEO'));
 		                  //walls.setGraphicSize(Std.int(walls.width * 1.1));
 		                  walls.setGraphicSize(1980, 1200);
 		                  walls.updateHitbox();
@@ -764,13 +764,13 @@ class PlayState extends MusicBeatState
 		                  add(walls);
 		          
               }
-              case 'problem':
+              case 'smog':
 		      {
 		                  defaultCamZoom = 0.7;
 		              
 		                  curStage = 'smog';
 		                  
-		                  var bg:FlxSprite = new FlxSprite(-150, -140).loadGraphic(Paths.image('smog'));
+		                  var bg:FlxSprite = new FlxSprite(-150, -140).loadGraphic(Paths.image('fheo/smog'));
 		                  bg.setGraphicSize(2180, 1340);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
@@ -785,7 +785,7 @@ class PlayState extends MusicBeatState
 		                  
 		                  bg.shader = wiggleShit.shader;
 
-		                  var plank:FlxSprite = new FlxSprite(700, 700).loadGraphic(Paths.image('plank')); 
+		                  var plank:FlxSprite = new FlxSprite(700, 700).loadGraphic(Paths.image('fheo/plank')); 
 		                  //bg.setGraphicSize(2180, 1340);
 		                  plank.antialiasing = true;
 		                  plank.scrollFactor.set(0.95, 0.95);
