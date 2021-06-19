@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.2]
 ### Changed
 - Trails on notes are more consistent
-- Title now shows "Friday Night Funkin' Kade Engine"
+- Title now shows "Friday Night Funkin' vs. Fheo"
 - **THIS UPDATE WILL RESET YOUR SAVE FOR KADE ENGINE**, so you gotta redo all of ur settings.
 
 ### Added
