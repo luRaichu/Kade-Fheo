@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fheoPortrait.png">
+	<!-- Created with Sublime Text -->
+	<SubTexture name="FHEO PISSED instance 10000" x="0" y="0" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10001" x="1554" y="0" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10002" x="1554" y="0" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10003" x="0" y="930" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10004" x="0" y="930" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10005" x="1554" y="930" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10006" x="1554" y="930" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10007" x="1554" y="930" width="1494" height="870"/>
+	<SubTexture name="FHEO PISSED instance 10008" x="1554" y="930" width="1494" height="870"/>
+</TextureAtlas>

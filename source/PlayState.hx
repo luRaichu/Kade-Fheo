@@ -2587,26 +2587,28 @@ class PlayState extends MusicBeatState
 					FlxTransitionableState.skipNextTransOut = true;
 					prevCamFollow = camFollow;
 
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
-					FlxG.sound.music.stop();
+				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+				FlxG.sound.music.stop();
 
-			switch(SONG.song.toLowerCase())
-			{
-				case 'problem':
-					LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm",new PlayState()));
-				default:
-					LoadingState.loadAndSwitchState(new PlayState());
-					}
+		switch(SONG.song.toLowerCase())
+		{
+			case 'problem':
+				LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm",new PlayState()));
+			default:
+				LoadingState.loadAndSwitchState(new PlayState());
 				}
-			}				
-		
-		
-			else
-			{
-				trace('WENT BACK TO FREEPLAY??');
-				FlxG.switchState(new FreeplayState());
 			}
+		}				
+		
+		
+		else
+		{
+			trace('WENT BACK TO FREEPLAY??');
+			FlxG.switchState(new FreeplayState());
 		}
+	}
+
+}
 	var endingSong:Bool = false;
 
 	var hits:Array<Float> = [];

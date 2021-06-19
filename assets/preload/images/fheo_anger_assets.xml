@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fheo_anger_assets.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Fheo2DOWN0000" x="10" y="10" width="279" height="323" frameX="0" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0001" x="299" y="10" width="279" height="323" frameX="0" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0002" x="588" y="10" width="278" height="322" frameX="-8" frameY="-2" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0003" x="876" y="10" width="278" height="322" frameX="-8" frameY="-2" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0004" x="1164" y="10" width="276" height="324" frameX="-12" frameY="0" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0005" x="1450" y="10" width="276" height="324" frameX="-12" frameY="0" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0006" x="1736" y="10" width="275" height="324" frameX="-17" frameY="0" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0007" x="10" y="344" width="275" height="324" frameX="-17" frameY="0" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0008" x="295" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0009" x="581" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0010" x="867" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0011" x="295" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0012" x="581" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0013" x="867" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2DOWN0014" x="295" y="344" width="276" height="323" frameX="-17" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0000" x="1153" y="344" width="286" height="318" frameX="0" frameY="-6" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0001" x="1153" y="344" width="286" height="318" frameX="0" frameY="-6" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0002" x="1449" y="344" width="292" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0003" x="1449" y="344" width="292" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0004" x="10" y="678" width="293" height="324"/>
+	<SubTexture name="Fheo2IDLE0005" x="10" y="678" width="293" height="324"/>
+	<SubTexture name="Fheo2IDLE0006" x="313" y="678" width="287" height="323" frameX="0" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0007" x="313" y="678" width="287" height="323" frameX="0" frameY="-1" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0008" x="610" y="678" width="287" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0009" x="610" y="678" width="287" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0010" x="907" y="678" width="288" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0011" x="907" y="678" width="288" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0012" x="907" y="678" width="288" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0013" x="907" y="678" width="288" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2IDLE0014" x="907" y="678" width="288" height="320" frameX="0" frameY="-4" frameWidth="293" frameHeight="324"/>
+	<SubTexture name="Fheo2LEFT0000" x="1205" y="678" width="303" height="325" frameX="-14" frameY="-4" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0001" x="1518" y="678" width="303" height="325" frameX="-14" frameY="-4" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0002" x="10" y="1013" width="302" height="329" frameX="-3" frameY="0" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0003" x="322" y="1013" width="302" height="329" frameX="-3" frameY="0" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0004" x="634" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0005" x="947" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0006" x="1260" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0007" x="634" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0008" x="947" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2LEFT0009" x="1260" y="1013" width="303" height="326" frameX="0" frameY="-3" frameWidth="317" frameHeight="329"/>
+	<SubTexture name="Fheo2RIGHT0000" x="1573" y="1013" width="305" height="322" frameX="0" frameY="0" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0001" x="10" y="1352" width="305" height="322" frameX="0" frameY="0" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0002" x="325" y="1352" width="306" height="319" frameX="-4" frameY="-3" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0003" x="641" y="1352" width="306" height="319" frameX="-4" frameY="-3" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0004" x="957" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0005" x="1274" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0006" x="1591" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0007" x="957" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0008" x="1274" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2RIGHT0009" x="1591" y="1352" width="307" height="320" frameX="-4" frameY="-2" frameWidth="311" frameHeight="322"/>
+	<SubTexture name="Fheo2UP0000" x="10" y="1684" width="267" height="261" frameX="0" frameY="0" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0001" x="287" y="1684" width="267" height="261" frameX="0" frameY="0" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0002" x="564" y="1684" width="272" height="256" frameX="0" frameY="-5" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0003" x="846" y="1684" width="273" height="256" frameX="0" frameY="-5" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0004" x="1129" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0005" x="1414" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0006" x="1699" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0007" x="1129" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0008" x="1414" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0009" x="1699" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0010" x="1129" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0011" x="1414" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0012" x="1699" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0013" x="1129" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+	<SubTexture name="Fheo2UP0014" x="1414" y="1684" width="275" height="250" frameX="0" frameY="-11" frameWidth="275" frameHeight="261"/>
+</TextureAtlas>

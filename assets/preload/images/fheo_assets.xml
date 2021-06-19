@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fheo_assets.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="catDOWNB0000" x="10" y="10" width="317" height="306" frameX="0" frameY="-12" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0001" x="10" y="10" width="317" height="306" frameX="0" frameY="-12" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0002" x="337" y="10" width="317" height="314" frameX="0" frameY="-5" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0003" x="337" y="10" width="317" height="314" frameX="0" frameY="-5" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0004" x="664" y="10" width="317" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0005" x="664" y="10" width="317" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0006" x="991" y="10" width="313" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0007" x="991" y="10" width="313" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0008" x="1314" y="10" width="311" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catDOWNB0009" x="1314" y="10" width="311" height="317" frameX="0" frameY="0" frameWidth="317" frameHeight="319"/>
+	<SubTexture name="catIDLEB0000" x="1635" y="10" width="286" height="320" frameX="0" frameY="-7" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0001" x="1635" y="10" width="286" height="320" frameX="0" frameY="-7" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0002" x="10" y="340" width="292" height="322" frameX="0" frameY="-5" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0003" x="10" y="340" width="292" height="322" frameX="0" frameY="-5" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0004" x="312" y="340" width="293" height="327"/>
+	<SubTexture name="catIDLEB0005" x="312" y="340" width="293" height="327"/>
+	<SubTexture name="catIDLEB0006" x="615" y="340" width="288" height="326" frameX="0" frameY="-1" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0007" x="615" y="340" width="288" height="326" frameX="0" frameY="-1" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0008" x="913" y="340" width="287" height="322" frameX="0" frameY="-5" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0009" x="913" y="340" width="287" height="322" frameX="0" frameY="-5" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0010" x="1210" y="340" width="288" height="323" frameX="0" frameY="-4" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0011" x="1210" y="340" width="288" height="323" frameX="0" frameY="-4" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0012" x="1210" y="340" width="288" height="323" frameX="0" frameY="-4" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0013" x="1210" y="340" width="288" height="323" frameX="0" frameY="-4" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catIDLEB0014" x="1210" y="340" width="288" height="323" frameX="0" frameY="-4" frameWidth="293" frameHeight="327"/>
+	<SubTexture name="catLEFTB0000" x="1508" y="340" width="299" height="349" frameX="0" frameY="0" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0001" x="1508" y="340" width="299" height="349" frameX="0" frameY="0" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0002" x="10" y="699" width="300" height="346" frameX="-4" frameY="-3" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0003" x="10" y="699" width="300" height="346" frameX="-4" frameY="-3" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0004" x="320" y="699" width="297" height="343" frameX="-10" frameY="-6" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0005" x="320" y="699" width="297" height="343" frameX="-10" frameY="-6" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0006" x="627" y="699" width="297" height="344" frameX="-12" frameY="-5" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0007" x="627" y="699" width="297" height="344" frameX="-12" frameY="-5" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0008" x="627" y="699" width="297" height="344" frameX="-12" frameY="-5" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catLEFTB0009" x="627" y="699" width="297" height="344" frameX="-12" frameY="-5" frameWidth="309" frameHeight="349"/>
+	<SubTexture name="catRIGHTB0000" x="934" y="699" width="297" height="301" frameX="0" frameY="0" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0001" x="934" y="699" width="297" height="301" frameX="0" frameY="0" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0002" x="1241" y="699" width="297" height="299" frameX="-6" frameY="-2" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0003" x="1241" y="699" width="297" height="299" frameX="-6" frameY="-2" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0004" x="1548" y="699" width="295" height="297" frameX="-10" frameY="-4" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0005" x="1548" y="699" width="295" height="297" frameX="-10" frameY="-4" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0006" x="1548" y="699" width="295" height="297" frameX="-10" frameY="-4" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0007" x="1548" y="699" width="295" height="297" frameX="-10" frameY="-4" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catRIGHTB0008" x="1548" y="699" width="295" height="297" frameX="-10" frameY="-4" frameWidth="305" frameHeight="301"/>
+	<SubTexture name="catTHROW0000" x="10" y="1055" width="289" height="327" frameX="-26" frameY="-127" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0001" x="10" y="1055" width="289" height="327" frameX="-26" frameY="-127" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0002" x="309" y="1055" width="282" height="300" frameX="-62" frameY="-153" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0003" x="309" y="1055" width="282" height="300" frameX="-62" frameY="-153" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0004" x="601" y="1055" width="255" height="412" frameX="0" frameY="-44" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0005" x="601" y="1055" width="255" height="412" frameX="0" frameY="-44" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0006" x="866" y="1055" width="253" height="456" frameX="0" frameY="0" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0007" x="866" y="1055" width="253" height="456" frameX="0" frameY="0" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0008" x="1129" y="1055" width="256" height="359" frameX="0" frameY="-97" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0009" x="1129" y="1055" width="256" height="359" frameX="0" frameY="-97" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0010" x="1395" y="1055" width="301" height="324" frameX="-14" frameY="-132" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catTHROW0011" x="1395" y="1055" width="301" height="324" frameX="-14" frameY="-132" frameWidth="344" frameHeight="456"/>
+	<SubTexture name="catUPhold0000" x="1706" y="1055" width="262" height="251" frameX="0" frameY="0" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0001" x="10" y="1521" width="263" height="251" frameX="0" frameY="0" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0002" x="283" y="1521" width="263" height="250" frameX="0" frameY="-1" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0003" x="556" y="1521" width="264" height="250" frameX="0" frameY="-1" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0004" x="830" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0005" x="1105" y="1521" width="264" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0006" x="1379" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0007" x="830" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0008" x="1105" y="1521" width="264" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0009" x="1379" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0010" x="830" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0011" x="1105" y="1521" width="264" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0012" x="1379" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0013" x="830" y="1521" width="265" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+	<SubTexture name="catUPhold0014" x="1105" y="1521" width="264" height="248" frameX="0" frameY="-3" frameWidth="265" frameHeight="251"/>
+</TextureAtlas>

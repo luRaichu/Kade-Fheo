@@ -106,6 +106,8 @@
 
 	<haxelib name="flixel" />
 	<haxedev set='webgl' />
+	<haxelib name="actuate" />
+	<haxelib name="extension-webm" if="desktop" />
 
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
