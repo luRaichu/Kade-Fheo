@@ -40,7 +40,7 @@ class DiscordClient
 			details: "In the Menus",
 			state: null,
 			largeImageKey: 'logo',
-			largeImageText: "Friday Night Funkin' vs. Fheo"
+			largeImageText: "Friday Night Funkin' Vs. Fheo"
 		});
 	}
 
@@ -76,7 +76,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'logo',
-			largeImageText: "Friday Night Funkin' vs. Fheo",
+			largeImageText: "Friday Night Funkin' Vs. Fheo",
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),
