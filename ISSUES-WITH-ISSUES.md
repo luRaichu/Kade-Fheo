@@ -16,7 +16,7 @@ What the individual issue templates are for is self-explanatory, but please ACTU
 ### What should go in a discussion?
 Discussions should be related to mods or forks of Kade Engine, as well as topics related to building the game from source.
 
-> issues are for suggestions/bugs with kade engine itself, not with forks/mods of it.
+> issues are for suggestions/bugs with Kade Engine itself, not with forks/mods of it.
 
 
 This whole thing was made by Prokube's head and a comment by daniel11420.
