@@ -1,4 +1,4 @@
-This is a funny mod for Kade Engine lol lol lol
+This is a funny mod for Vs. Fheo lol lol lol
 
 To compile, follow the regular FNF compiling guide but install these libraries as well.
 >haxelib install actuate

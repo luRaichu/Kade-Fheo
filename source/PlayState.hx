@@ -791,6 +791,25 @@ class PlayState extends MusicBeatState
 		                  plank.scrollFactor.set(0.95, 0.95);
 		                  plank.active = false;
 		                  add(plank);
+		        }
+		        case 'pulse':
+		      	{
+		                  defaultCamZoom = 0.9;
+
+		                  var pulse:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('fheo/pulse'));
+		                  pulse.setGraphicSize(1980, 1200);
+		                  pulse.updateHitbox();
+		                  pulse.antialiasing = true;
+		                  pulse.scrollFactor.set(0.95, 0.95);
+		                  pulse.active = false;
+		                  add(pulse);
+
+		                  wiggleShit.effectType = WiggleEffectType.DREAMY;
+		                  wiggleShit.waveAmplitude = 0.01;
+		                  wiggleShit.waveFrequency = 40;
+		                  wiggleShit.waveSpeed = 4;
+
+		                  pulse.shader = wiggleShit.shader;
 
        
 		          }
