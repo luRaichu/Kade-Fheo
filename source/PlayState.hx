@@ -103,6 +103,9 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	var cat_r:Float = 600;
+	var moveCat:Bool = false;
+
 	private var vocals:FlxSound;
 
 	public static var dad:Character;
@@ -770,6 +773,19 @@ class PlayState extends MusicBeatState
 		              
 		                  curStage = 'smog';
 		                  
+		                  moveCat = true;
+
+							var rotRateCat = curStep / 9.5;
+							var cat_to_y = -2450 + -Math.sin(rotRateCat * 2) * cat_r * 0.45;
+							var cat_to_x = -330 -Math.cos(rotRateCat) * cat_r;
+
+
+						if (moveCat)
+							{
+								dad.x += (cat_to_x - dad.x) / 12;
+								dad.y += (cat_to_y - dad.y) / 12;
+							}
+
 		                  var bg:FlxSprite = new FlxSprite(-150, -140).loadGraphic(Paths.image('fheo/smog'));
 		                  bg.setGraphicSize(2180, 1340);
 		                  bg.antialiasing = true;
@@ -2239,6 +2255,18 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new PlayState());
 			}
 		}
+
+
+
+
+		// TWEENING BULLSHIT
+
+
+
+
+
+
+
 
 		// better streaming of shit
 
