@@ -420,7 +420,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('hey', 'QUOTE HEY', 24, false);
 
 				animation.addByPrefix('firstDeath', "QUOTE dies", 24, false);
-				animation.addByPrefix('deathLoop', "QUOTE Dead Loop", 24, true);
+				animation.addByPrefix('deathLoop', "QUOTE Dead Loop", 15, true);
 				animation.addByPrefix('deathConfirm', "QUOTE Dead confirm", 24, false);
 
 				animation.addByPrefix('scared', 'QUOTE idle shaking', 24);
