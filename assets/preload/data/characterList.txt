@@ -4,4 +4,4 @@ fheo
 fheo-angry
 fheo-demon
 bf-robot
-bf-tabi
+bf-scare

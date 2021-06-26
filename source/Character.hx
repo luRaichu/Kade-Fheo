@@ -444,7 +444,7 @@ class Character extends FlxSprite
 
 				flipX = true;*/
 
-			case 'bf-tabi':
+			case 'bf-scare':
 
 				frames = Paths.getSparrowAtlas('BOYFRIEND_TABI');
 				
