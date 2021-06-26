@@ -1,7 +1,7 @@
 bf
-bf-robot
-bf-scare
 gf
 fheo
 fheo-angry
 fheo-demon
+bf-robot
+bf-tabi
