@@ -844,7 +844,7 @@ class PlayState extends MusicBeatState
 		                  wiggleShit.effectType = WiggleEffectType.DREAMY;
 		                  wiggleShit.waveAmplitude = 0.01;
 		                  wiggleShit.waveFrequency = 40;
-		                  wiggleShit.waveSpeed = 4;
+		                  wiggleShit.waveSpeed = 0.1;
 		                  
 		                  bg.shader = wiggleShit.shader;
 
@@ -3564,7 +3564,7 @@ class PlayState extends MusicBeatState
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
-		wiggleShit.update(Conductor.crochet);
+		wiggleShit.update(Conductor.crochet); //FIX THIS BULLSHIT LATER!
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)

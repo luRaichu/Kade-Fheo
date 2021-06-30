@@ -405,7 +405,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-			/*case 'bf-robot': 
+			case 'bf-robot': 
 				var tex = Paths.getSparrowAtlas('QUOTE');
 				frames = tex;
 				animation.addByPrefix('idle', 'QUOTE idle dance', 24, false);
@@ -442,22 +442,22 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				flipX = true;*/
+				flipX = true;
 
 			case 'bf-scare':
 
-				frames = Paths.getSparrowAtlas('BOYFRIEND_TABI');
+				frames = Paths.getSparrowAtlas('BOYFRIEND');
 				
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
+				animation.addByPrefix('idle', 'BF idle shaking', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 60, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 60, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 60, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 60, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 60, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 60, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 60, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 60, false);
+				animation.addByPrefix('hey', 'BF HEY', 60, false);
 
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
