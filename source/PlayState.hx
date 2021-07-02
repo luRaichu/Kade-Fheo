@@ -55,14 +55,12 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-
-#if windows
-import Discord.DiscordClient;
-#end
-#if windows
+#if desktop
 import Sys;
 import sys.FileSystem;
+import Discord.DiscordClient;
 #end
+
 
 using StringTools;
 
@@ -137,7 +135,7 @@ class PlayState extends MusicBeatState
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
 	
-	#if windows
+	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	var iconRPC:String = "";
@@ -296,7 +294,7 @@ class PlayState extends MusicBeatState
 
 		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
 
-		#if windows
+		#if desktop
 		// Making difficulty text for Discord Rich Presence.
 		switch (storyDifficulty)
 		{
@@ -833,7 +831,7 @@ class PlayState extends MusicBeatState
 								dad.y += (cat_to_y - dad.y) / 12;
 							}*/
 
-		                  var bg:FlxSprite = new FlxSprite(-150, -140).loadGraphic(Paths.image('fheo/smog'));
+		                  var bg:FlxSprite = new FlxSprite(-160, -140).loadGraphic(Paths.image('fheo/smog'));
 		                  bg.setGraphicSize(2180, 1340);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
@@ -843,8 +841,8 @@ class PlayState extends MusicBeatState
 
 		                  wiggleShit.effectType = WiggleEffectType.DREAMY;
 		                  wiggleShit.waveAmplitude = 0.01;
-		                  wiggleShit.waveFrequency = 40;
-		                  wiggleShit.waveSpeed = 0.1;
+		                  wiggleShit.waveFrequency = 20;
+		                  wiggleShit.waveSpeed = 0.0001;
 		                  
 		                  bg.shader = wiggleShit.shader;
 
@@ -1002,6 +1000,7 @@ class PlayState extends MusicBeatState
 		if (SONG.player2 == 'fheo-demon') // STOLEN FROM SHAGGY MOD LOL LOL LOL
 		{
 			catT = new FlxTrail(dad, null, 5, 7, 0.3, 0.001);
+			catT.color = FlxColor.RED;
 			add(catT);
 		}
 
@@ -1358,7 +1357,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['ready', "set", "go"]);
+			introAssets.set('default', ['ready', "set", "go_animation"]);
 			introAssets.set('school', [
 				'weeb/pixelUI/ready-pixel',
 				'weeb/pixelUI/set-pixel',
@@ -1423,8 +1422,12 @@ class PlayState extends MusicBeatState
 					});
 					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
 				case 3:
-					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+					var go:FlxSprite = new FlxSprite()/*.loadGraphic(Paths.image(introAlts[2]))*/;
 					go.scrollFactor.set();
+
+					go.frames = Paths.getSparrowAtlas('go_animation');
+					go.antialiasing = true;
+					go.animation.addByPrefix('swell', 'GO!!', 48, false);
 
 					if (curStage.startsWith('school'))
 						go.setGraphicSize(Std.int(go.width * daPixelZoom));
@@ -1441,6 +1444,26 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
+					go.animation.play('swell');
+
+					/*var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+					go.scrollFactor.set();
+
+					if (curStage.startsWith('school'))
+						go.setGraphicSize(Std.int(go.width * daPixelZoom));
+
+					go.updateHitbox();
+
+					go.screenCenter();
+					add(go);
+					FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							go.destroy();
+						}
+					});
+					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);*/
 				case 4:
 			}
 
@@ -1513,7 +1536,7 @@ class PlayState extends MusicBeatState
 			default: allowedToHeadbang = false;
 		}
 		
-		#if windows
+		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 		#end
@@ -1796,7 +1819,7 @@ class PlayState extends MusicBeatState
 				vocals.pause();
 			}
 
-			#if windows
+			#if desktop
 			DiscordClient.changePresence("PAUSED on " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "Acc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 			#end
 			if (!startTimer.finished)
@@ -1819,7 +1842,7 @@ class PlayState extends MusicBeatState
 				startTimer.active = true;
 			paused = false;
 
-			#if windows
+			#if desktop
 			if (startTimer.finished)
 			{
 				DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses, iconRPC, true, songLength - Conductor.songPosition);
@@ -1844,7 +1867,7 @@ class PlayState extends MusicBeatState
 		vocals.time = Conductor.songPosition;
 		vocals.play();
 
-		#if windows
+		#if desktop
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 		#end
 	}
@@ -1863,8 +1886,10 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
-		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
+		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ZERO)
 			camHUD.visible = !camHUD.visible;
+
+		wiggleShit.update(333.333333333333);
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -1986,7 +2011,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			#if windows
+			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 			FlxG.switchState(new ChartingState());
@@ -2042,7 +2067,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		if (FlxG.keys.justPressed.ZERO)
+		if (FlxG.keys.justPressed.TWO)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player1));
 			#if windows
@@ -2344,7 +2369,7 @@ class PlayState extends MusicBeatState
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-			#if windows
+			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
 			DiscordClient.changePresence("GAME OVER -- " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy),"\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 			#end
@@ -3564,7 +3589,6 @@ class PlayState extends MusicBeatState
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
-		wiggleShit.update(Conductor.crochet); //FIX THIS BULLSHIT LATER!
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)

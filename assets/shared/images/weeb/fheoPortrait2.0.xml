@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fheoPortrait2.0.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="catPortait600000" x="10" y="10" width="527" height="394" frameX="0" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600001" x="547" y="10" width="527" height="394" frameX="-11" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600002" x="547" y="10" width="527" height="394" frameX="-22" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600003" x="547" y="10" width="527" height="394" frameX="-32" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600004" x="547" y="10" width="527" height="394" frameX="-41" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600005" x="547" y="10" width="527" height="394" frameX="-51" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600006" x="547" y="10" width="527" height="394" frameX="-59" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600007" x="547" y="10" width="527" height="394" frameX="-68" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600008" x="547" y="10" width="527" height="394" frameX="-75" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600009" x="547" y="10" width="527" height="394" frameX="-83" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600010" x="547" y="10" width="527" height="394" frameX="-90" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600011" x="547" y="10" width="527" height="394" frameX="-96" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600012" x="547" y="10" width="527" height="394" frameX="-102" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600013" x="547" y="10" width="527" height="394" frameX="-107" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600014" x="547" y="10" width="527" height="394" frameX="-112" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600015" x="547" y="10" width="527" height="394" frameX="-117" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600016" x="547" y="10" width="527" height="394" frameX="-121" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600017" x="547" y="10" width="527" height="394" frameX="-124" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600018" x="547" y="10" width="527" height="394" frameX="-127" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600019" x="547" y="10" width="527" height="394" frameX="-130" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600020" x="547" y="10" width="527" height="394" frameX="-132" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600021" x="547" y="10" width="527" height="394" frameX="-134" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600022" x="547" y="10" width="527" height="394" frameX="-135" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600023" x="547" y="10" width="527" height="394" frameX="-136" frameY="-1" frameWidth="663" frameHeight="395"/>
+	<SubTexture name="catPortait600024" x="1084" y="10" width="527" height="394" frameX="-136" frameY="0" frameWidth="663" frameHeight="395"/>
+</TextureAtlas>

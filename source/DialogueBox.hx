@@ -124,9 +124,12 @@ class DialogueBox extends FlxSpriteGroup
 			return;
 		
 		portraitLeft = new FlxSprite(-5000, 40);
-		portraitLeft.frames = Paths.getSparrowAtlas('weeb/fheoPortrait');
-		portraitLeft.animation.addByPrefix('enter', 'Fheo Enter instance', 24, false);
+		portraitLeft.frames = Paths.getSparrowAtlas('weeb/fheoPortrait2.0');
+		portraitLeft.animation.addByPrefix('enter', 'catPortait', 60, false);
+		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.9));
+		portraitLeft.setPosition(50, 160);
 		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+		portraitLeft.antialiasing = true;
 		portraitLeft.updateHitbox();
 		portraitLeft.scrollFactor.set();
 		add(portraitLeft);
@@ -151,8 +154,9 @@ class DialogueBox extends FlxSpriteGroup
 		portraitMad.visible = false;
 
 		portraitRight = new FlxSprite(-30, 35);
-		portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendREAL');
-		portraitRight.animation.addByPrefix('enter', 'Boy Enter instance', 24, false);
+		portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendPortrait2.0');
+		portraitRight.animation.addByPrefix('enter', 'BF piss moment', 60, false);
+		portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.9));
 		//portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
