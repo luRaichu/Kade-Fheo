@@ -268,18 +268,9 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.stop();
 
 		#if sys
-		if (sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
-		{
-			trace('quote.png exists');
-		}
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
 		{
 			System.exit(0);
-		}
-
-		if (sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.xml"))
-		{
-			trace('quote.xml exists');
 		}
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.xml"))
 		{
@@ -297,7 +288,7 @@ class PlayState extends MusicBeatState
 		repPresses = 0;
 		repReleases = 0;
 
-		#if windows
+		#if desktop
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
 		#end
 		#if !cpp
@@ -1335,7 +1326,7 @@ class PlayState extends MusicBeatState
 
 	var luaWiggles:Array<WiggleEffect> = [];
 
-	#if windows
+	#if desktop
 	public static var luaModchart:ModchartState = null;
 	#end
 
@@ -1347,7 +1338,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(1);
 
 
-		#if windows
+		#if desktop
 		if (executeModchart)
 		{
 			luaModchart = ModchartState.createModchartState();
@@ -1583,7 +1574,7 @@ class PlayState extends MusicBeatState
 		var playerCounter:Int = 0;
 
 		// Per song offset check
-		#if windows
+		#if desktop
 			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 			for(file in sys.FileSystem.readDirectory(songPath))
 			{
@@ -1903,7 +1894,7 @@ class PlayState extends MusicBeatState
 
 		wiggleShit.update(333.333333333333);
 
-		#if windows
+		#if desktop
 		if (executeModchart && luaModchart != null && songStarted)
 		{
 			luaModchart.setVar('songPos',Conductor.songPosition);
@@ -2027,7 +2018,7 @@ class PlayState extends MusicBeatState
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 			FlxG.switchState(new ChartingState());
-			#if windows
+			#if desktop
 			if (luaModchart != null)
 			{
 				luaModchart.die();
@@ -2070,7 +2061,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
-			#if windows
+			#if desktop
 			if (luaModchart != null)
 			{
 				luaModchart.die();
@@ -2082,7 +2073,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.TWO)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player1));
-			#if windows
+			#if desktop
 			if (luaModchart != null)
 			{
 				luaModchart.die();
@@ -2228,7 +2219,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 			
-			#if windows
+			#if desktop
 			if (luaModchart != null)
 				luaModchart.setVar("mustHit",PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 			#end
@@ -2237,7 +2228,7 @@ class PlayState extends MusicBeatState
 			{
 				var offsetX = 0;
 				var offsetY = 0;
-				#if windows
+				#if desktop
 				if (luaModchart != null)
 				{
 					offsetX = luaModchart.getVar("followXOffset", "float");
@@ -2245,7 +2236,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 				camFollow.setPosition(dad.getMidpoint().x + 150 + offsetX, dad.getMidpoint().y - 100 + offsetY);
-				#if windows
+				#if desktop
 				if (luaModchart != null)
 					luaModchart.executeState('playerTwoTurn', []);
 				#end
@@ -2271,7 +2262,7 @@ class PlayState extends MusicBeatState
 			{
 				var offsetX = 0;
 				var offsetY = 0;
-				#if windows
+				#if desktop
 				if (luaModchart != null)
 				{
 					offsetX = luaModchart.getVar("followXOffset", "float");
@@ -2280,7 +2271,7 @@ class PlayState extends MusicBeatState
 				#end
 				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX, boyfriend.getMidpoint().y - 100 + offsetY);
 
-				#if windows
+				#if desktop
 				if (luaModchart != null)
 					luaModchart.executeState('playerOneTurn', []);
 				#end
@@ -2403,7 +2394,7 @@ class PlayState extends MusicBeatState
 		
 					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		
-					#if windows
+					#if desktop
 					// Game Over doesn't get his own variable because it's only used here
 					DiscordClient.changePresence("GAME OVER -- " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy),"\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 					#end
@@ -2535,7 +2526,7 @@ class PlayState extends MusicBeatState
 								dad.playAnim('singLEFT' + altAnim, true);
 						}
 	
-						#if windows
+						#if desktop
 						if (luaModchart != null)
 							luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
 						#end
@@ -2628,7 +2619,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.fpsCap > 290)
 			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
 
-		#if windows
+		#if desktop
 		if (luaModchart != null)
 		{
 			luaModchart.die();
@@ -2670,7 +2661,7 @@ class PlayState extends MusicBeatState
 
 					FlxG.switchState(new StoryMenuState());
 
-					#if windows
+					#if desktop
 					if (luaModchart != null)
 					{
 						luaModchart.die();
@@ -3252,7 +3243,7 @@ class PlayState extends MusicBeatState
 					boyfriend.playAnim('singRIGHTmiss', true);
 			}
 
-			#if windows
+			#if desktop
 			if (luaModchart != null)
 				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
 			#end
@@ -3403,7 +3394,7 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('singLEFT', true);
 					}
 		
-					#if windows
+					#if desktop
 					if (luaModchart != null)
 						luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
 					#end
@@ -3539,7 +3530,7 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		#if windows
+		#if desktop
 		if (executeModchart && luaModchart != null)
 		{
 			luaModchart.setVar('curStep',curStep);
@@ -3556,7 +3547,7 @@ class PlayState extends MusicBeatState
 		// yes this updates every step.
 		// yes this is bad
 		// but i'm doing it to update misses and accuracy
-		#if windows
+		#if desktop
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
 
@@ -3578,7 +3569,7 @@ class PlayState extends MusicBeatState
 			notes.sort(FlxSort.byY, (FlxG.save.data.downscroll ? FlxSort.ASCENDING : FlxSort.DESCENDING));
 		}
 
-		#if windows
+		#if desktop
 		if (executeModchart && luaModchart != null)
 		{
 			luaModchart.setVar('curBeat',curBeat);
