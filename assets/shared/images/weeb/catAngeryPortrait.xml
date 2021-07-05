@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="catAngeryPortrait.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="catMAD0000" x="10" y="10" width="527" height="350" frameX="0" frameY="-2" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0001" x="547" y="10" width="528" height="350" frameX="-31" frameY="-1" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0002" x="1085" y="10" width="528" height="350" frameX="-86" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0003" x="1085" y="10" width="528" height="350" frameX="-99" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0004" x="1085" y="10" width="528" height="350" frameX="-107" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0005" x="1085" y="10" width="528" height="350" frameX="-113" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0006" x="1085" y="10" width="528" height="350" frameX="-117" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0007" x="1085" y="10" width="528" height="350" frameX="-120" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0008" x="1085" y="10" width="528" height="350" frameX="-123" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0009" x="1085" y="10" width="528" height="350" frameX="-125" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0010" x="1085" y="10" width="528" height="350" frameX="-126" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0011" x="1085" y="10" width="528" height="350" frameX="-128" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0012" x="1085" y="10" width="528" height="350" frameX="-128" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0013" x="1085" y="10" width="528" height="350" frameX="-128" frameY="0" frameWidth="656" frameHeight="352"/>
+	<SubTexture name="catMAD0014" x="10" y="370" width="527" height="350" frameX="-129" frameY="0" frameWidth="656" frameHeight="352"/>
+</TextureAtlas>

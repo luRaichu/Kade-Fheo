@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boyfriendScaredPortrait.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bfPortraitScared0000" x="10" y="10" width="407" height="413" frameX="-88" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0001" x="10" y="10" width="407" height="413" frameX="-77" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0002" x="10" y="10" width="407" height="413" frameX="-67" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0003" x="10" y="10" width="407" height="413" frameX="-58" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0004" x="10" y="10" width="407" height="413" frameX="-49" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0005" x="10" y="10" width="407" height="413" frameX="-41" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0006" x="10" y="10" width="407" height="413" frameX="-34" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0007" x="10" y="10" width="407" height="413" frameX="-28" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0008" x="10" y="10" width="407" height="413" frameX="-22" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0009" x="10" y="10" width="407" height="413" frameX="-17" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0010" x="10" y="10" width="407" height="413" frameX="-12" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0011" x="10" y="10" width="407" height="413" frameX="-8" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0012" x="10" y="10" width="407" height="413" frameX="-5" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0013" x="10" y="10" width="407" height="413" frameX="-3" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0014" x="10" y="10" width="407" height="413" frameX="-1" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0015" x="10" y="433" width="408" height="413" frameX="0" frameY="0" frameWidth="495" frameHeight="413"/>
+	<SubTexture name="bfPortraitScared0016" x="10" y="433" width="408" height="413" frameX="0" frameY="0" frameWidth="495" frameHeight="413"/>
+</TextureAtlas>

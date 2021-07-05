@@ -55,12 +55,15 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import flash.system.System;
 #if desktop
+import Discord.DiscordClient;
 import Sys;
 import sys.FileSystem;
-import Discord.DiscordClient;
 #end
-
+#if sys
+import sys.io.File;
+#end
 
 using StringTools;
 
@@ -95,12 +98,6 @@ using StringTools;
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡇⠀⠀⠀⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣤⣤⣤⣼⣿⣿⣿⣿⣦⣤⣤⣤⣤⣤⣤⣤⣼⣿⣿⣷⣦⣤⣤⣤⣤⣤⣶⣿⣿⣷⣤⣤⣤⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-
-Galaxy, if you're reading this, don't use my shitty Fheo moving in circles implementation.
-use FlxTween
-
-- Ivan
-
 */
 
 
@@ -270,10 +267,25 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		/*if FileSystem.exists(Paths.images('QUOTE'));
+		#if sys
+		if (sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
 		{
-			trace('quote exists');
-		}*/
+			trace('quote.png exists');
+		}
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
+		{
+			System.exit(0);
+		}
+
+		if (sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.xml"))
+		{
+			trace('quote.xml exists');
+		}
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.xml"))
+		{
+			System.exit(0);
+		}
+		#end
 
 		sicks = 0;
 		bads = 0;

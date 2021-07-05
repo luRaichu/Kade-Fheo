@@ -9,6 +9,8 @@ import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.addons.effects.FlxTrail;
+import flixel.addons.effects.FlxTrailArea;
 
 using StringTools;
 
@@ -29,8 +31,6 @@ class DialogueBox extends FlxSpriteGroup
 	public var finishThing:Void->Void;
 
 	var portraitLeft:FlxSprite;
-	var portraitHel:FlxSprite;
-	var portraitMad:FlxSprite;
 	var portraitRight:FlxSprite;
 
 	var handSelect:FlxSprite;
@@ -123,45 +123,61 @@ class DialogueBox extends FlxSpriteGroup
 		if (!hasDialog)
 			return;
 		
-		portraitLeft = new FlxSprite(-5000, 40);
-		portraitLeft.frames = Paths.getSparrowAtlas('weeb/fheoPortrait2.0');
-		portraitLeft.animation.addByPrefix('enter', 'catPortait', 60, false);
-		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.9));
-		portraitLeft.setPosition(50, 160);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitLeft.antialiasing = true;
-		portraitLeft.updateHitbox();
-		portraitLeft.scrollFactor.set();
-		add(portraitLeft);
-		portraitLeft.visible = false;
+		// left portrait loading code thing
 
-		portraitHel = new FlxSprite(-5000, 40);
-		portraitHel.frames = Paths.getSparrowAtlas('weeb/fheoAkumaPortrait');
-		portraitHel.animation.addByPrefix('enter', 'dead inside instance', 15, false);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitHel.updateHitbox();
-		portraitHel.scrollFactor.set();
-		add(portraitHel);
-		portraitHel.visible = false;
+		switch (PlayState.SONG.song.toLowerCase())
+		{
+			default:
+				portraitLeft = new FlxSprite(0, 120);
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/fheoPortrait2.0');
+				portraitLeft.animation.addByPrefix('enter', 'catPortait', 60, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.9));
+				portraitLeft.antialiasing = true;
+				portraitLeft.updateHitbox();
+				portraitLeft.scrollFactor.set();
+				add(portraitLeft);
+				portraitLeft.visible = false;
 
-		portraitMad = new FlxSprite(-5000, 40);
-		portraitMad.frames = Paths.getSparrowAtlas('weeb/fheoMADportrait');
-		portraitMad.animation.addByPrefix('enter', 'FHEO PISSED instance', 24, false);
-		//portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-		portraitMad.updateHitbox();
-		portraitMad.scrollFactor.set();
-		add(portraitMad);
-		portraitMad.visible = false;
+			case 'loiter':
+				portraitLeft = new FlxSprite(0, 150);
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/catAngeryPortrait');
+				portraitLeft.animation.addByPrefix('enter', 'catMAD', 60, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.9));
+				portraitLeft.antialiasing = true;
+				portraitLeft.updateHitbox();
+				portraitLeft.scrollFactor.set();
+				add(portraitLeft);
+				portraitLeft.visible = false;
 
-		portraitRight = new FlxSprite(-30, 35);
-		portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendPortrait2.0');
-		portraitRight.animation.addByPrefix('enter', 'BF piss moment', 60, false);
-		portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.9));
-		//portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
-		portraitRight.updateHitbox();
-		portraitRight.scrollFactor.set();
-		add(portraitRight);
-		portraitRight.visible = false;
+			case 'problem':
+				portraitLeft = new FlxSprite(0, 160);
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/catAkumaPortrait');
+				portraitLeft.animation.addByPrefix('enter', 'catDemonPortrait', 60, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.8));
+				portraitLeft.antialiasing = true;
+				portraitLeft.updateHitbox();
+				portraitLeft.scrollFactor.set();
+				add(portraitLeft);
+				portraitLeft.visible = false;
+
+		}
+
+		// right portrait loading code thing
+
+		switch (PlayState.SONG.song.toLowerCase())
+		{
+			default:
+				portraitRight = new FlxSprite(720, 170);
+				portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendPortrait2.0');
+				portraitRight.animation.addByPrefix('enter', 'BF piss moment', 60, false);
+				portraitRight.antialiasing = true;
+				portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.8));
+				portraitRight.updateHitbox();
+				portraitRight.scrollFactor.set();
+				add(portraitRight);
+				portraitRight.visible = false;
+		}
+
 		
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
@@ -169,9 +185,6 @@ class DialogueBox extends FlxSpriteGroup
 		add(box);
 
 		box.screenCenter(X);
-		portraitLeft.screenCenter(X);
-		portraitHel.screenCenter(X);
-		portraitMad.screenCenter(X);
 
 		/*handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
 		add(handSelect);*/
@@ -204,14 +217,6 @@ class DialogueBox extends FlxSpriteGroup
 	override function update(elapsed:Float)
 	{
 		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
-		if (PlayState.SONG.song.toLowerCase() == 'thorns')
-		{
-			portraitLeft.color = FlxColor.BLACK;
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
 		if (PlayState.SONG.song.toLowerCase() == 'food')
 		{
 			//portraitLeft.color = FlxColor.BLACK;
@@ -267,8 +272,6 @@ class DialogueBox extends FlxSpriteGroup
 						box.alpha -= 1 / 5;
 						bgFade.alpha -= 1 / 5 * 0.7;
 						portraitLeft.visible = false;
-						portraitHel.visible = false;
-						portraitMad.visible = false;
 						portraitRight.visible = false;
 						swagDialogue.alpha -= 1 / 5;
 						dropText.alpha = swagDialogue.alpha;
@@ -312,20 +315,6 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('enter');
-				}
-			case 'hel':
-				portraitRight.visible = false;
-				if (!portraitHel.visible)
-				{
-					portraitHel.visible = true;
-					portraitHel.animation.play('enter');
-				}
-			case 'mad':
-				portraitRight.visible = false;
-				if (!portraitMad.visible)
-				{
-					portraitMad.visible = true;
-					portraitMad.animation.play('enter');
 				}
 			case 'bf':
 				portraitLeft.visible = false;
