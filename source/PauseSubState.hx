@@ -2,7 +2,6 @@ package;
 
 import openfl.Lib;
 #if desktop
-import llua.Lua;
 #end
 import Controls.Control;
 import flixel.FlxG;
@@ -16,12 +15,13 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flash.system.System;
 
 class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu', 'Quit Game'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -179,6 +179,8 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				case "Resume":
 					close();
+				case "Quit Game":
+					System.exit(0);
 				case "Restart Song":
 					FlxG.resetState();
 				case "Exit to menu":
@@ -189,7 +191,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.downscroll = false;
 					}
 					PlayState.loadRep = false;
-					#if desktop
+					#if windows
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
