@@ -269,11 +269,13 @@ class PlayState extends MusicBeatState
 
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
-		{
+		{	
+			Application.current.window.alert("You really thought the game\nwould work without QUOTE.png?","PISSED");
 			System.exit(0);
 		}
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.xml"))
 		{
+			Application.current.window.alert("You need the XML too","PISSED");
 			System.exit(0);
 		}
 		#end

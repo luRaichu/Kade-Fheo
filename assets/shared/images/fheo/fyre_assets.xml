@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fyre_assets.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Effect Fire 10000" x="980" y="264" width="21" height="25" frameX="-1" frameY="-10" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10001" x="946" y="226" width="23" height="27" frameX="0" frameY="-9" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10002" x="991" y="137" width="23" height="28" frameX="-1" frameY="-8" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10003" x="980" y="187" width="24" height="31" frameX="-1" frameY="-5" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10004" x="624" y="227" width="25" height="33" frameX="-1" frameY="-3" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10005" x="552" y="227" width="26" height="33" frameX="-1" frameY="-3" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10006" x="588" y="227" width="26" height="33" frameX="-1" frameY="-3" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10007" x="954" y="98" width="27" height="34" frameX="-1" frameY="-2" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10008" x="956" y="10" width="28" height="34" frameX="0" frameY="-2" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10009" x="956" y="54" width="28" height="34" frameX="0" frameY="-2" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10010" x="943" y="296" width="27" height="36" frameX="-1" frameY="0" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10011" x="481" y="227" width="26" height="36" frameX="-1" frameY="0" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10012" x="954" y="142" width="26" height="35" frameX="-1" frameY="-1" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10013" x="517" y="227" width="25" height="36" frameX="-2" frameY="0" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10014" x="991" y="98" width="23" height="29" frameX="-2" frameY="-7" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10015" x="980" y="330" width="23" height="20" frameX="-1" frameY="-16" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10016" x="980" y="299" width="22" height="21" frameX="-2" frameY="-15" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10017" x="946" y="263" width="21" height="23" frameX="-2" frameY="-12" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 10018" x="980" y="228" width="21" height="26" frameX="-1" frameY="-10" frameWidth="28" frameHeight="36"/>
+	<SubTexture name="Effect Fire 20000" x="10" y="364" width="221" height="55" frameX="-4" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20001" x="243" y="296" width="223" height="57" frameX="-3" frameY="-7" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20002" x="478" y="156" width="223" height="61" frameX="-2" frameY="-6" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20003" x="10" y="296" width="223" height="58" frameX="-3" frameY="-5" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20004" x="245" y="157" width="222" height="60" frameX="-4" frameY="-4" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20005" x="10" y="86" width="224" height="61" frameX="-2" frameY="-4" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20006" x="244" y="86" width="224" height="61" frameX="-3" frameY="-1" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20007" x="716" y="155" width="225" height="61" frameX="-1" frameY="-1" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20008" x="723" y="10" width="223" height="64" frameX="-3" frameY="0" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20009" x="483" y="10" width="230" height="63" frameX="0" frameY="-1" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20010" x="246" y="227" width="225" height="59" frameX="-5" frameY="-3" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20011" x="10" y="10" width="227" height="66" frameX="-2" frameY="-3" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20012" x="716" y="84" width="228" height="61" frameX="-3" frameY="-3" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20013" x="247" y="10" width="226" height="66" frameX="-2" frameY="-2" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20014" x="483" y="83" width="223" height="63" frameX="-4" frameY="-3" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20015" x="711" y="226" width="225" height="60" frameX="-3" frameY="-6" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20016" x="710" y="296" width="223" height="56" frameX="-5" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20017" x="475" y="427" width="223" height="54" frameX="-3" frameY="-11" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20018" x="241" y="428" width="224" height="51" frameX="-4" frameY="-11" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20019" x="709" y="426" width="221" height="55" frameX="-5" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20020" x="709" y="362" width="226" height="54" frameX="-4" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20021" x="476" y="362" width="223" height="55" frameX="-5" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20022" x="10" y="227" width="226" height="59" frameX="-3" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20023" x="476" y="296" width="224" height="56" frameX="-3" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20024" x="10" y="157" width="225" height="60" frameX="-3" frameY="-9" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20025" x="10" y="429" width="221" height="42" frameX="-5" frameY="-20" frameWidth="231" frameHeight="69"/>
+	<SubTexture name="Effect Fire 20026" x="243" y="363" width="222" height="55" frameX="-4" frameY="-13" frameWidth="231" frameHeight="69"/>
+</TextureAtlas>

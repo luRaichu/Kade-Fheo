@@ -1,57 +1,80 @@
-package ;
- 
-import flixel.system.FlxBasePreloader;
-import openfl.display.Sprite;
-import flash.display.Bitmap;
-import flash.display.BitmapData;
-import flash.display.BlendMode;
-import flash.display.Sprite;
-import flash.Lib;
+//SHOUTOUTS TO GAMEPOPPER FOR THE BALLIN TUTORIAL
+//https://gamepopper.co.uk/2014/08/26/haxeflixel-making-a-custom-preloader/
+package;
+
 import flixel.FlxG;
- 
+import flixel.system.FlxBasePreloader;
+import flash.display.*;
+import flash.text.*;
+import flash.Lib;
+import flixel.text.FlxText;
+import openfl.display.Sprite;
+import openfl.display.BitmapData;
+import flash.text.Font;
+import flash.text.TextField;
+import flash.text.TextFormat;
+
+
+@:font() class CustomFont extends Font {}
 @:bitmap("art/preloaderArt.png") class LogoImage extends BitmapData { }
- 
-class Preloader extends FlxBasePreloader
+class Preloader extends FlxBasePreloader 
 {
-    public function new(MinDisplayTime:Float=3, ?AllowedURLs:Array<String>) 
+    override public function new(MinDisplayTime:Float=0, ?AllowedURLs:Array<String>)
     {
         super(MinDisplayTime, AllowedURLs);
     }
-     
-    var logo:Sprite;
-     
-    override function create():Void 
-    {
+
+    private var logo:Sprite;
+    var text:TextField;
+    private var _buffer:Sprite;
+    private var _bmpBar:Bitmap;
+    
+    override private function create():Void
+    {   
+        //#if (newgrounds)
+            //var newgrounds:NGio = new NGio(APIStuff.APIID, APIStuff.EncKey);
+        //#end
+        
         this._width = Lib.current.stage.stageWidth;
         this._height = Lib.current.stage.stageHeight;
-         
-        var ratio:Float = this._width / 2560; //This allows us to scale assets depending on the size of the screen.
-         
+        
+        var ratio:Float = this._width / 800; //This allows us to scale assets depending on the size of the screen.
+        
         logo = new Sprite();
-        logo.addChild(new Bitmap(new LogoImage(0,0))); //Sets the graphic of the sprite to a Bitmap object, which uses our embedded BitmapData class.
-        logo.scaleX = logo.scaleY = ratio;
-        logo.x = ((this._width) / 2) - ((logo.width) / 2);
-        logo.y = (this._height / 2) - ((logo.height) / 2);
-        addChild(logo); //Adds the graphic to the NMEPreloader's buffer.
-         
+        logo.scaleY = 0;
+        logo.addChild(new Bitmap(new LogoImage(0, 0))); //Sets the graphic of the sprite to a bitmap object, which uses our embedded bitmapData class
+        addChild(logo);
+        
+        _buffer = new Sprite();
+        //_buffer.scaleX = _buffer.scaleY = 2;
+        addChild(_buffer);
+        
+        _bmpBar = new Bitmap(new BitmapData(1, 14, false, 0x5f6aff));
+        _bmpBar.x = 4;
+        _bmpBar.y = _height - 17;
+        //_buffer.addChild(_bmpBar);
+        
         super.create();
     }
-     
-    override function update(Percent:Float):Void 
+    
+    override private function destroy():Void 
     {
-        if(Percent < 69)
+        if (_buffer != null)    
         {
-            logo.scaleX += Percent / 1920;
-            logo.scaleY += Percent / 1920;
-            logo.x -= Percent * 0.6;
-            logo.y -= Percent / 2;
-        }else{
-            logo.scaleX = this._width / 1280;
-            logo.scaleY = this._width / 1280;
-            logo.x = ((this._width) / 2) - ((logo.width) / 2);
-            logo.y = (this._height / 2) - ((logo.height) / 2);
+            removeChild(_buffer);
         }
+        _buffer = null;
+        _bmpBar = null;
+        logo = null;
         
+        super.destroy();
+    }
+    
+    override public function update(Percent:Float):Void 
+    {
         super.update(Percent);
+        
+        logo.scaleY = Percent;
+        _bmpBar.scaleX = Percent * (_width - 8);
     }
 }
