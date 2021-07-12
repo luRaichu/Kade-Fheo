@@ -176,6 +176,17 @@ class DialogueBox extends FlxSpriteGroup
 				portraitRight.scrollFactor.set();
 				add(portraitRight);
 				portraitRight.visible = false;
+
+			case 'problem':
+				portraitRight = new FlxSprite(720, 190);
+				portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendScaredPortrait');
+				portraitRight.animation.addByPrefix('enter', 'bfPortraitScared', 60, false);
+				portraitRight.antialiasing = true;
+				portraitRight.setGraphicSize(Std.int(portraitRight.width * 1));
+				portraitRight.updateHitbox();
+				portraitRight.scrollFactor.set();
+				add(portraitRight);
+				portraitRight.visible = false;
 		}
 
 		
