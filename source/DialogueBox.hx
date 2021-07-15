@@ -9,8 +9,11 @@ import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import flixel.addons.effects.FlxTrail;
-import flixel.addons.effects.FlxTrailArea;
+import flixel.addons.effects.chainable.FlxEffectSprite;
+import flixel.addons.effects.chainable.FlxWaveEffect;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import WiggleEffect.WiggleEffectType;
 
 using StringTools;
 
@@ -22,6 +25,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	var dialogue:Alphabet;
 	var dialogueList:Array<String> = [];
+	var wigglegaming:WiggleEffect = new WiggleEffect();
+	var tweengaming:FlxTween;
 
 	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
 	var swagDialogue:FlxTypeText;
@@ -59,7 +64,7 @@ class DialogueBox extends FlxSpriteGroup
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
 		}
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
+		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFFFFFFF);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
@@ -115,7 +120,12 @@ class DialogueBox extends FlxSpriteGroup
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-hell');
 				box.animation.addByPrefix('normalOpen', 'HELL Textbox spawn instance', 15, false);
 				box.animation.addByIndices('normal', 'HELL Textbox spawn instance', [11], "", 15);
-
+				wigglegaming.effectType = WiggleEffectType.HEAT_WAVE_HORIZONTAL;
+		    	wigglegaming.waveAmplitude = 0.01;
+		    	wigglegaming.waveFrequency = 30;
+		    	wigglegaming.waveSpeed = 0.0001;
+				box.shader = wigglegaming.shader;
+				tweengaming = FlxTween.circularMotion(box, box.x, box.y, 10, 10, true, 3, true, {type: LOOPING});
 		}
 
 		this.dialogueList = dialogueList;
@@ -227,6 +237,9 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
+
+		wigglegaming.update(333.333333333333);
+
 		// HARD CODING CUZ IM STUPDI
 		if (PlayState.SONG.song.toLowerCase() == 'food')
 		{

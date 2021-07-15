@@ -283,6 +283,20 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		function getUsername() {
+    		var envs = Sys.environment();
+    		if (envs.exists("USERNAME")) {
+        		return envs["USERNAME"];
+    		}
+    		if (envs.exists("USER")) {
+        		return envs["USER"];
+    		}    
+    		if (envs.exists("COMPUTERNAME")) {
+        		return envs["COMPUTERNAME"];
+    		}    
+    		return null;
+		}
+
 		sicks = 0;
 		bads = 0;
 		shits = 0;
@@ -366,6 +380,8 @@ class PlayState extends MusicBeatState
 
 		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nBotPlay : ' + FlxG.save.data.botplay);
 	
+		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
+
 		//dialogue shit
 		switch (SONG.song.toLowerCase())
 		{
@@ -397,7 +413,7 @@ class PlayState extends MusicBeatState
 			case 'loiter':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('loiter/loiterDialogue'));
 			case 'problem':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('problem/problemTrashtalk'));
+				dialogue = Helldialogue;
 		}
 
 		switch(SONG.stage)
@@ -3311,7 +3327,7 @@ class PlayState extends MusicBeatState
 			if (SONG.notes[Math.floor(curStep / 16)].changeBPM)
 			{
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
-				FlxG.log.add('CHANGED BPM!');
+				FlxG.log.add('changed bpm.');
 			}
 			// else
 			// Conductor.changeBPM(SONG.bpm);
@@ -3360,7 +3376,7 @@ class PlayState extends MusicBeatState
 		{	
 			switch (curBeat)
 			{
-				case 60|99|195: // smol circles
+				case 60|99|203: // smol circles
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
@@ -3369,6 +3385,7 @@ class PlayState extends MusicBeatState
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 3, true, {type: LOOPING});
 				case 150: // big, fast, pingpong circles
+					FlxG.camera.zoom += 0.1;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 210, 0, true, 2, true, {type: PINGPONG});
@@ -3381,6 +3398,7 @@ class PlayState extends MusicBeatState
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 1, true, {type: LOOPING});
 				case 186: // sonk speed
+					FlxG.camera.zoom -= 0.1;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 1, true, {type: LOOPING});
