@@ -118,6 +118,11 @@ class AnimationDebug extends FlxState
 		if (FlxG.keys.justPressed.Q)
 			FlxG.camera.zoom -= 0.25;
 
+		if (FlxG.keys.justPressed.ESCAPE) {
+			
+			FlxG.switchState(new MainMenuState());
+		}
+
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
 			if (FlxG.keys.pressed.I)
@@ -163,10 +168,10 @@ class AnimationDebug extends FlxState
 			genBoyOffsets(false);
 		}
 
-		var upP = FlxG.keys.anyJustPressed([UP]);
-		var rightP = FlxG.keys.anyJustPressed([RIGHT]);
-		var downP = FlxG.keys.anyJustPressed([DOWN]);
-		var leftP = FlxG.keys.anyJustPressed([LEFT]);
+		var upP = FlxG.keys.anyPressed([UP]);
+		var rightP = FlxG.keys.anyPressed([RIGHT]);
+		var downP = FlxG.keys.anyPressed([DOWN]);
+		var leftP = FlxG.keys.anyPressed([LEFT]);
 
 		var holdShift = FlxG.keys.pressed.SHIFT;
 		var multiplier = 1;

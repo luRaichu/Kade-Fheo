@@ -18,6 +18,7 @@ class Note extends FlxSprite
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
+	public var attack:Bool = false;
 	public var noteData:Int = 0;
 	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
@@ -54,6 +55,13 @@ class Note extends FlxSprite
 
 		if (this.strumTime < 0 )
 			this.strumTime = 0;
+
+		attack = noteData > 7;
+
+		//No held attack notes :[ (Part 1)
+		if(isSustainNote && prevNote.attack) { 
+			attack = true;
+		}
 
 		this.noteData = noteData;
 
@@ -103,6 +111,31 @@ class Note extends FlxSprite
 				animation.addByPrefix('greenhold', 'green hold piece');
 				animation.addByPrefix('redhold', 'red hold piece');
 				animation.addByPrefix('bluehold', 'blue hold piece');
+				
+				if(attack){
+					/*if (daStage == 'auditorHell')
+					{
+						frames = Paths.getSparrowAtlas('fourth/mech/ALL_deathnotes', "clown");
+						animation.addByPrefix('greenScroll', 'Green Arrow');
+						animation.addByPrefix('redScroll', 'Red Arrow');
+						animation.addByPrefix('blueScroll', 'Blue Arrow');
+						animation.addByPrefix('purpleScroll', 'Purple Arrow');
+						x -= 165;
+					}
+					else
+					{*/
+						frames = Paths.getSparrowAtlas('NOTE_assets');
+						animation.addByPrefix('greenScroll', 'attack up');
+						animation.addByPrefix('blueScroll', 'attack down');
+						animation.addByPrefix('redScroll', 'attack right');
+						animation.addByPrefix('purpleScroll', 'attack left');
+
+						/*if(FlxG.save.data.downscroll)
+							flipY = true;
+
+						x -= 50;*/
+					}
+				
 
 				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
@@ -187,6 +220,11 @@ class Note extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		//No held attack notes :[ (Part 2)
+		if(isSustainNote && prevNote.attack) { 
+			this.kill(); 
+		}
 
 		if (mustPress)
 		{

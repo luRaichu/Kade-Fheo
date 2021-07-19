@@ -2310,36 +2310,46 @@ class PlayState extends MusicBeatState
 					if (daNote.isSustainNote)
 						daNote.x += daNote.width / 2 + 17;
 					
+					daNote.y -= (daNote.attack ? ((curStage != 'auditorHell' && FlxG.save.data.downscroll) ? 185 : 65 ) : 0);
 
 					//trace(daNote.y);
 					// WIP interpolation shit? Need to fix the pause issue
 					// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
 	
-					if ((daNote.mustPress && daNote.tooLate && !FlxG.save.data.downscroll || daNote.mustPress && daNote.tooLate && FlxG.save.data.downscroll) && daNote.mustPress)
-					{
-						if (daNote.isSustainNote && daNote.wasGoodHit)
-						{
+					if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
+							{
+								if (daNote.isSustainNote && daNote.wasGoodHit)
+								{
+									daNote.kill();
+									notes.remove(daNote, true);
+									daNote.destroy();
+								}
+								else
+								{
+									
+									if (!daNote.attack && daNote.mustPress)
+									{
+										if (!daNote.isSustainNote)
+										{
+											health -= 0.075;
+											noteMiss(daNote.noteData, daNote);
+										}
+										else if (daNote.isSustainNote)
+										{
+											health -= 0.035;
+										}
+										vocals.volume = 0;
+									}
+								}		
+							daNote.active = false;
+							daNote.visible = false;
+		
 							daNote.kill();
 							notes.remove(daNote, true);
 							daNote.destroy();
 						}
-						else
-						{
-							health -= 0.075;
-							vocals.volume = 0;
-							if (theFunne)
-								noteMiss(daNote.noteData, daNote);
-						}
-	
-						daNote.active = false;
-						daNote.visible = false;
-	
-						daNote.kill();
-						notes.remove(daNote, true);
-						daNote.destroy();
-					}
-				});
-			}
+					});
+				}
 
 
 		if (!inCutscene)
@@ -2870,18 +2880,44 @@ class PlayState extends MusicBeatState
 									if (pressArray[shit] && !directionList.contains(shit))
 										noteMiss(shit, null);
 								}
-						}
-						for (coolNote in possibleNotes)
+					}
+				for (coolNote in possibleNotes)
+					{
+						if (pressArray[coolNote.noteData])
 						{
-							if (pressArray[coolNote.noteData])
+							if (mashViolations != 0)
+								mashViolations--;
+							scoreTxt.color = FlxColor.WHITE;
+							if (coolNote.attack)
 							{
-								if (mashViolations != 0)
-									mashViolations--;
-								scoreTxt.color = FlxColor.WHITE;
-								goodNoteHit(coolNote);
+								if ('sus' == 'sus') // just kill me now
+								{
+									// lol death
+									health = 0;
+								}
+								else
+								{
+									health -= 0.45;
+									coolNote.wasGoodHit = true;
+									coolNote.canBeHit = false;
+									coolNote.kill();
+									notes.remove(coolNote, true);
+									coolNote.destroy();
+									FlxG.sound.play(Paths.sound('burnSound','clown'));
+									playerStrums.forEach(function(spr:FlxSprite)
+									{
+										if (pressArray[spr.ID] && spr.ID == coolNote.noteData)
+										{
+											trace('sussy');
+										}
+									});
+								}
 							}
+							else
+								goodNoteHit(coolNote);
 						}
 					}
+				}
 					else if (!FlxG.save.data.ghost)
 						{
 							for (shit in 0...pressArray.length)
@@ -3137,6 +3173,8 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('singDOWN', true);
 						case 0:
 							boyfriend.playAnim('singLEFT', true);
+						case 4:
+							boyfriend.playAnim('attack', false);
 					}
 		
 					#if windows
