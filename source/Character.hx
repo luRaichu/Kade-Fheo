@@ -199,6 +199,7 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", 6, -10);
 
 				playAnim('idle');
+				playAnim('singUP-alt');
 
 			case 'fheo-angry':
 				// FHEO MAD ANIMATION LOADING CODE
@@ -236,6 +237,26 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 21, 9);
 				addOffset("singDOWN", -39, -41);
 				addOffset("singRIGHT-alt", 59, 0);
+
+				playAnim('idle');
+
+			case 'fheo-dead':
+				// *coffin dance*
+				tex = Paths.getSparrowAtlas('dead_fheo');
+				frames = tex;
+
+				animation.addByPrefix('idle', 'cat idle', 24);
+				animation.addByPrefix('singUP', 'cat up', 24);
+				animation.addByPrefix('singRIGHT', 'cat right', 24); 
+				animation.addByPrefix('singDOWN', 'cat down', 24);
+				animation.addByPrefix('singLEFT', 'cat left', 24);
+				animation.addByPrefix('myc', 'myc', 24);
+
+				addOffset('idle', 0, 0);
+				addOffset("singUP", 0, 41);
+				addOffset("singRIGHT", -3, 60);
+				addOffset("singLEFT", -23, -47);
+				addOffset("singDOWN", -7, -9);
 
 				playAnim('idle');
 
@@ -407,7 +428,19 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
+			case 'bf-dead':
+				var tex = Paths.getSparrowAtlas('BF_DEAD');
+				frames = tex;
 
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+
+				addOffset('firstDeath', 37, 11);
+				addOffset('deathLoop', 37, 5);
+				addOffset('deathConfirm', 37, 69);
+
+				flipX = true;
 			case 'bf-robot': 
 				var tex = Paths.getSparrowAtlas('QUOTE');
 				frames = tex;
@@ -428,20 +461,20 @@ class Character extends FlxSprite
 
 				animation.addByPrefix('scared', 'QUOTE idle shaking', 24);
 
-				addOffset('idle', -5);
+				addOffset('idle', -5, 1);
 				addOffset("singUP", -29, 27);
 				addOffset("singRIGHT", -38, -7);
 				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
+				addOffset("singDOWN", 21, -61);
 				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
+				addOffset("singRIGHTmiss", -22, 19);
 				addOffset("singLEFTmiss", 12, 24);
 				addOffset("singDOWNmiss", -11, -19);
 				addOffset("hey", 7, 4);
 				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
+				addOffset('deathLoop', 37, 6);
+				addOffset('deathConfirm', 23, 78);
+				addOffset('scared', 3, -7);
 
 				playAnim('idle');
 

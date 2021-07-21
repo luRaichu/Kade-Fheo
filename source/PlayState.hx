@@ -358,6 +358,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 		#end
 
+		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -379,8 +380,6 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(SONG.bpm);
 
 		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nBotPlay : ' + FlxG.save.data.botplay);
-	
-		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
 
 		//dialogue shit
 		switch (SONG.song.toLowerCase())
@@ -658,6 +657,8 @@ class PlayState extends MusicBeatState
 
 			case "spooky":
 				dad.y += 200;
+			case "fheo-dead":
+				dad.y -= 497;
 			case 'fheo':
 				dad.x -= -25;
 				dad.y -= -423;
@@ -1656,6 +1657,8 @@ class PlayState extends MusicBeatState
 				i.update(elapsed);
 			}
 
+			trace(FlxG.save.data.esrb)
+
 			/*for (i in 0...strumLineNotes.length) {
 				var member = strumLineNotes.members[i];
 				member.x = luaModchart.getVar("strum" + i + "X", "float");
@@ -1753,7 +1756,6 @@ class PlayState extends MusicBeatState
 			// 1 / 1000 chance for Gitaroo Man easter egg
 			if (FlxG.random.bool(0.1))
 			{
-				trace('GITAROO MAN EASTER EGG');
 				FlxG.switchState(new GitarooPause());
 			}
 			else

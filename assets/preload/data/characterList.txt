@@ -5,3 +5,4 @@ fheo-angry
 fheo-demon
 bf-robot
 bf-scare
+fheo-dead

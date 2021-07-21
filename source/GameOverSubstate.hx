@@ -27,7 +27,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				stageSuffix = '-sus';
 				daBf = 'bf-robot';
 			default:
-				daBf = 'bf';
+				daBf = 'bf-dead';
 		}
 
 		super();
