@@ -24,6 +24,7 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
+		['food', 'loiter', 'problem'],
 		['food', 'loiter', 'problem']
 	];
 	var curDifficulty:Int = 1;
@@ -31,11 +32,13 @@ class StoryMenuState extends MusicBeatState
 	public static var weekUnlocked:Array<Bool> = [true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['fheo', 'bf', 'gf']
+		['fheo', 'bf', 'gf'],
+		['dead', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
-		"funny cat - not a furry"
+		"funny cat - not a furry",
+		"pain is yummy"
 	];
 
 	var txtWeekTitle:FlxText;

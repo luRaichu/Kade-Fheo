@@ -239,6 +239,8 @@ class PlayState extends MusicBeatState
 
 	public static var timeCurrently:Float = 0;
 	public static var timeCurrentlyR:Float = 0;
+
+	public var fheoHealth = 5; // Fheo's health, decreases every time an attack note is hit
 	
 	// Will fire once to prevent debug spam messages and broken animations
 	private var triggeredAlready:Bool = false;
@@ -272,7 +274,7 @@ class PlayState extends MusicBeatState
 
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/shared/images/QUOTE.png"))
-		{	
+		{
 			Application.current.window.alert("You really thought the game\nwould work without QUOTE.png?","PISSED");
 			System.exit(0);
 		}
@@ -617,6 +619,49 @@ class PlayState extends MusicBeatState
 		                  add(layer2);
 
               	}
+				case 'wasted':
+				{
+							defaultCamZoom = 0.9;
+							curStage = 'wasted';
+
+							var size = 1.3;
+
+							var dead0:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/dead0'));
+							dead0.setGraphicSize(Std.int(dead0.width * size));
+							dead0.antialiasing = true;
+							dead0.scrollFactor.set(0.5, 0.5);
+							dead0.active = false;
+							add(dead0);
+	  
+							var dead1:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/dead1'));
+							dead1.setGraphicSize(Std.int(dead1.width * size));
+							dead1.antialiasing = true;
+							dead1.scrollFactor.set(0.7, 0.7);
+							dead1.active = false;
+							add(dead1);
+
+							var dead2:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/dead2'));
+							dead2.setGraphicSize(Std.int(dead2.width * size));
+							dead2.antialiasing = true;
+							dead2.scrollFactor.set(0.8, 0.8);
+							dead2.active = false;
+							add(dead2);
+
+							var dead3:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/dead3'));
+							dead3.setGraphicSize(Std.int(dead3.width * size));
+							dead3.antialiasing = true;
+							dead3.scrollFactor.set(0.85, 0.85);
+							dead3.active = false;
+							add(dead3);
+
+							var dead4:FlxSprite = new FlxSprite(-430, -100).loadGraphic(Paths.image('fheo/dead4'));
+							dead4.setGraphicSize(Std.int(dead4.width * size));
+							dead4.antialiasing = true;
+							dead4.scrollFactor.set(1.1, 1.1);
+							dead4.active = false;
+							add(dead4);
+						
+					}
 
 
        		}
@@ -658,7 +703,8 @@ class PlayState extends MusicBeatState
 			case "spooky":
 				dad.y += 200;
 			case "fheo-dead":
-				dad.y -= 497;
+				dad.x -= 400;
+				dad.y -= -497;
 			case 'fheo':
 				dad.x -= -25;
 				dad.y -= -423;
@@ -671,9 +717,8 @@ class PlayState extends MusicBeatState
 				dad.y -= -423;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'fheo-demon':
-				dad.x -= -31;
+				dad.x -= 40;
 				dad.y -= -213;
-				//evilTrail.visible = true;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case "monster":
 				dad.y += 100;
@@ -742,18 +787,28 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 		}
+		if (SONG.player2 != 'fheo-dead')
+		{
+			add(gf);
+		}
 
-		add(gf);
-
-		if (SONG.player2 == 'fheo-demon') // STOLEN FROM SHAGGY MOD LOL LOL LOL
+		if (SONG.player2 == 'fheo-demon')
 		{
 			catT = new FlxTrail(dad, null, 5, 7, 0.3, 0.001);
 			catT.color = FlxColor.RED;
 			add(catT);
-			trace(dad.x);
-			trace(dad.y);
 			gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
 			
+		}
+		if (SONG.player2 == 'fheo-dead')
+		{
+			var myc:FlxSprite = new FlxSprite(dad.x - -344, dad.y - -246);
+			myc.frames = Paths.getSparrowAtlas('dead_fheo');
+			myc.animation.addByPrefix('myc', 'myc', 24, false);
+			myc.animation.play('myc');
+			myc.antialiasing = true;
+			add(myc);
+
 		}
 
 		// Shitty layering but whatev it works LOL
@@ -1353,7 +1408,7 @@ class PlayState extends MusicBeatState
 				if (daStrumTime < 0)
 					daStrumTime = 0;
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
-
+				var leNoteStyle:String = songNotes[3];
 				var gottaHitNote:Bool = section.mustHitSection;
 
 				if (songNotes[1] > 3)
@@ -1367,7 +1422,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, leNoteStyle);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
 
@@ -1380,7 +1435,7 @@ class PlayState extends MusicBeatState
 				{
 					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true);
+					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, leNoteStyle);
 					sustainNote.scrollFactor.set();
 					unspawnNotes.push(sustainNote);
 
@@ -2312,7 +2367,7 @@ class PlayState extends MusicBeatState
 					if (daNote.isSustainNote)
 						daNote.x += daNote.width / 2 + 17;
 					
-					daNote.y -= (daNote.attack ? ((curStage != 'auditorHell' && FlxG.save.data.downscroll) ? 185 : 65 ) : 0);
+					//daNote.y -= (((curStage != 'auditorHell' && FlxG.save.data.downscroll) ? 185 : 65 ) : 0);
 
 					//trace(daNote.y);
 					// WIP interpolation shit? Need to fix the pause issue
@@ -2329,8 +2384,9 @@ class PlayState extends MusicBeatState
 								else
 								{
 									
-									if (!daNote.attack && daNote.mustPress)
+									if (daNote.mustPress)
 									{
+										if (daNote.noteStyle != 'attack'){
 										if (!daNote.isSustainNote)
 										{
 											health -= 0.075;
@@ -2341,6 +2397,7 @@ class PlayState extends MusicBeatState
 											health -= 0.035;
 										}
 										vocals.volume = 0;
+										}
 									}
 								}		
 							daNote.active = false;
@@ -2520,6 +2577,7 @@ class PlayState extends MusicBeatState
 
 			var daRating = daNote.rating;
 
+			if (daNote.noteStyle != 'attack'){
 			switch(daRating)
 			{
 				case 'shit':
@@ -2554,6 +2612,7 @@ class PlayState extends MusicBeatState
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 1;
 					sicks++;
+			}
 			}
 
 			// trace('Wife accuracy loss: ' + wife + ' | Rating: ' + daRating + ' | Score: ' + score + ' | Weight: ' + (1 - wife));
@@ -2888,35 +2947,14 @@ class PlayState extends MusicBeatState
 						if (pressArray[coolNote.noteData])
 						{
 							if (mashViolations != 0)
+							{
 								mashViolations--;
 							scoreTxt.color = FlxColor.WHITE;
-							if (coolNote.attack)
-							{
-								if ('sus' == 'sus') // just kill me now
-								{
-									// lol death
-									health = 0;
-								}
-								else
-								{
-									health -= 0.45;
-									coolNote.wasGoodHit = true;
-									coolNote.canBeHit = false;
-									coolNote.kill();
-									notes.remove(coolNote, true);
-									coolNote.destroy();
-									FlxG.sound.play(Paths.sound('burnSound','clown'));
-									playerStrums.forEach(function(spr:FlxSprite)
-									{
-										if (pressArray[spr.ID] && spr.ID == coolNote.noteData)
-										{
-											trace('sussy');
-										}
-									});
-								}
 							}
 							else
+							{
 								goodNoteHit(coolNote);
+							}
 						}
 					}
 				}
@@ -2994,6 +3032,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
+			if (daNote.noteStyle != 'attack'){
 			health -= 0.04;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
@@ -3033,6 +3072,7 @@ class PlayState extends MusicBeatState
 
 
 			updateAccuracy();
+			}
 		}
 	}
 
@@ -3175,8 +3215,6 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('singDOWN', true);
 						case 0:
 							boyfriend.playAnim('singLEFT', true);
-						case 4:
-							boyfriend.playAnim('attack', false);
 					}
 		
 					#if windows
@@ -3195,6 +3233,12 @@ class PlayState extends MusicBeatState
 							spr.animation.play('confirm', true);
 						}
 					});
+
+					if (note.noteStyle == 'attack'){
+						fheoHealth--;
+						boyfriend.playAnim('attack', false);
+						trace('ANIMAL ABUSE ' + fheoHealth);
+					}
 					
 					note.wasGoodHit = true;
 					vocals.volume = 1;
@@ -3417,28 +3461,32 @@ class PlayState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 60|99|203: // smol circles
+					FlxG.camera.zoom += 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
 				case 16|82: // big circles
+					FlxG.camera.zoom -= 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 3, true, {type: LOOPING});
 				case 150: // big, fast, pingpong circles
-					FlxG.camera.zoom += 0.1;
+					FlxG.camera.zoom += 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 210, 0, true, 2, true, {type: PINGPONG});
 				case 50: // medium
+					FlxG.camera.zoom -= 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 160, 0, true, 3.1, true, {type: LOOPING});
 				case 95: // fast n' glitche
+					FlxG.camera.zoom += 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 1, true, {type: LOOPING});
 				case 186: // sonk speed
-					FlxG.camera.zoom -= 0.1;
+					FlxG.camera.zoom -= 0.3;
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 1, true, {type: LOOPING});
