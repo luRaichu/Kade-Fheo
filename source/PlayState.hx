@@ -1,6 +1,6 @@
 package;
 
-import flixel.input.keyboard.FlxKey;
+/*import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
 import openfl.geom.Matrix;
 import openfl.display.BitmapData;
@@ -9,13 +9,13 @@ import lime.graphics.Image;
 import flixel.graphics.FlxGraphic;
 import openfl.utils.AssetManifest;
 import openfl.utils.AssetLibrary;
-import flixel.system.FlxAssets;
+import flixel.system.FlxAssets;*/
 
 //import sys.FileSystem;
 
 import lime.app.Application;
-import lime.media.AudioContext;
-import lime.media.AudioManager;
+//import lime.media.AudioContext;
+//import lime.media.AudioManager;
 import openfl.Lib;
 import Section.SwagSection;
 import Song.SwagSong;
@@ -23,19 +23,19 @@ import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.FlxGame;
+//import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.FlxState;
+//import flixel.FlxState;
 import flixel.FlxSubState;
-import flixel.addons.display.FlxGridOverlay;
+//import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
-import flixel.addons.effects.FlxTrailArea;
-import flixel.addons.effects.chainable.FlxEffectSprite;
-import flixel.addons.effects.chainable.FlxWaveEffect;
+//import flixel.addons.effects.FlxTrailArea;
+//import flixel.addons.effects.chainable.FlxEffectSprite;
+//import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.graphics.atlas.FlxAtlas;
-import flixel.graphics.frames.FlxAtlasFrames;
+//import flixel.graphics.atlas.FlxAtlas;
+//import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
@@ -45,17 +45,17 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
-import flixel.util.FlxCollision;
+//import flixel.util.FlxCollision;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
-import flixel.util.FlxStringUtil;
+//import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 import flixel.addons.effects.chainable.FlxGlitchEffect;
-import haxe.Json;
-import lime.utils.Assets;
-import openfl.display.BlendMode;
-import openfl.display.StageQuality;
-import openfl.filters.ShaderFilter;
+//import haxe.Json;
+//import lime.utils.Assets;
+//import openfl.display.BlendMode;
+//import openfl.display.StageQuality;
+//import openfl.filters.ShaderFilter;
 import flash.system.System;
 #if desktop
 import Discord.DiscordClient;
@@ -106,6 +106,8 @@ class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState = null;
 
+	public var fheoHealth = Main.fheoHealth;
+
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -118,7 +120,7 @@ class PlayState extends MusicBeatState
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
 	var gatoTween:FlxTween;
-	var glitch:FlxGlitchEffect;
+	var bfTween:FlxTween;
 
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
@@ -129,11 +131,14 @@ class PlayState extends MusicBeatState
 	public static var noteBools:Array<Bool> = [false, false, false, false];
 
 	private var catT:FlxTrail;
+	private var boyT:FlxTrail;
 
 	var halloweenLevel:Bool = false;
 
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
+
+	public var attacking:Bool = false;
 	
 	#if desktop
 	// Discord RPC variables
@@ -239,8 +244,6 @@ class PlayState extends MusicBeatState
 
 	public static var timeCurrently:Float = 0;
 	public static var timeCurrentlyR:Float = 0;
-
-	public var fheoHealth = 5; // Fheo's health, decreases every time an attack note is hit
 	
 	// Will fire once to prevent debug spam messages and broken animations
 	private var triggeredAlready:Bool = false;
@@ -285,6 +288,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		#if sys
 		function getUsername() {
     		var envs = Sys.environment();
     		if (envs.exists("USERNAME")) {
@@ -298,6 +302,7 @@ class PlayState extends MusicBeatState
     		}    
     		return null;
 		}
+		#end
 
 		sicks = 0;
 		bads = 0;
@@ -360,8 +365,18 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 		#end
 
+		#if desktop
 		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
-
+		#end
+		#if !desktop
+		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, whatever your name is."];
+		#end
+		
+		var fheoDiags;
+		if (Main.fheoHealth < 5)
+			fheoDiags = CoolUtil.coolTextFile(Paths.txt('suffocating/suffoSussyDialogue'));
+		if (Main.fheoHealth > 5)
+			fheoDiags = CoolUtil.coolTextFile(Paths.txt('suffocating/suffoUnSusWords'));
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -376,7 +391,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = Song.loadFromJson('test');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -386,36 +401,23 @@ class PlayState extends MusicBeatState
 		//dialogue shit
 		switch (SONG.song.toLowerCase())
 		{
-			case 'tutorial':
-				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
-			case 'bopeebo':
-				dialogue = [
-					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
-					"If you want to date her...",
-					"You're going to have to go \nthrough ME first!"
-				];
-			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
-			case 'dad battle':
-				dialogue = [
-					"gah you think you're hot stuff?",
-					"If you can beat me here...",
-					"Only then I will even CONSIDER letting you\ndate my daughter!"
-				];
-			case 'senpai':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
-			case 'roses':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
-			case 'thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
 			case 'food':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('food/foodDialogue'));
 			case 'loiter':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('loiter/loiterDialogue'));
 			case 'problem':
 				dialogue = Helldialogue;
+			case 'fallen':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('fallen/fallenDialogue'));
+			case 'suffocating':
+				if (Main.fheoHealth < 5){
+					dialogue = CoolUtil.coolTextFile(Paths.txt('suffocating/suffoSussyDialogue'));
+				}
+				else{
+					dialogue = CoolUtil.coolTextFile(Paths.txt('suffocating/suffoUnSusWords'));
+				}
 		}
+
 
 		switch(SONG.stage)
 		{
@@ -535,7 +537,7 @@ class PlayState extends MusicBeatState
 								dad.y += (cat_to_y - dad.y) / 12;
 							}*/
 
-		                  var bg:FlxSprite = new FlxSprite(-160, -140).loadGraphic(Paths.image('fheo/smog'));
+		                  var bg:FlxSprite = new FlxSprite(-170, -140).loadGraphic(Paths.image('fheo/smog'));
 		                  bg.setGraphicSize(2180, 1340);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
@@ -561,7 +563,7 @@ class PlayState extends MusicBeatState
 		      	{
 		                  defaultCamZoom = 0.9;
 
-		                  var pulse:FlxSprite = new FlxSprite(-300, -100).loadGraphic(Paths.image('fheo/pulse'));
+		                  /*var pulse:FlxSprite = new FlxSprite(-400, -100).loadGraphic(Paths.image('fheo/pulse'));
 		                  pulse.setGraphicSize(1980, 1200);
 		                  pulse.updateHitbox();
 		                  pulse.antialiasing = true;
@@ -571,10 +573,10 @@ class PlayState extends MusicBeatState
 
 		                  wiggleShit.effectType = WiggleEffectType.DREAMY;
 		                  wiggleShit.waveAmplitude = 0.01;
-		                  wiggleShit.waveFrequency = 40;
-		                  wiggleShit.waveSpeed = 4;
+		                  wiggleShit.waveFrequency = 20;
+		                  wiggleShit.waveSpeed = 0.0001;
 
-		                  pulse.shader = wiggleShit.shader;
+		                  pulse.shader = wiggleShit.shader;*/
 
        			}
 		        case 'hell':
@@ -705,6 +707,7 @@ class PlayState extends MusicBeatState
 			case "fheo-dead":
 				dad.x -= 400;
 				dad.y -= -497;
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'fheo':
 				dad.x -= -25;
 				dad.y -= -423;
@@ -746,7 +749,6 @@ class PlayState extends MusicBeatState
 		}
 
 
-		
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		// REPOSITIONING PER STAGE
@@ -791,7 +793,23 @@ class PlayState extends MusicBeatState
 		{
 			add(gf);
 		}
+		if (SONG.song == 'Pulse')
+		{
+			remove(gf);
+			gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
+			bfTween = FlxTween.circularMotion(boyfriend, boyfriend.x, boyfriend.y, 133, 0, false, 3, true, {type: LOOPING});
 
+			catT = new FlxTrail(dad, null, 5, 7, 0.3, 0.001);
+			catT.color = FlxColor.CYAN;
+			add(catT);
+
+			boyT = new FlxTrail(boyfriend, null, 5, 7, 0.3, 0.001);
+			boyT.color = FlxColor.CYAN;
+			add(boyT);
+
+			dad.updateHitbox();
+			boyfriend.updateHitbox();
+		}
 		if (SONG.player2 == 'fheo-demon')
 		{
 			catT = new FlxTrail(dad, null, 5, 7, 0.3, 0.001);
@@ -1021,6 +1039,10 @@ class PlayState extends MusicBeatState
 				case 'loiter':
 					schoolIntro(doof);
 				case 'problem':
+					schoolIntro(doof);
+				case 'fallen':
+					schoolIntro(doof);
+				case 'suffocating':
 					schoolIntro(doof);
 				default:
 					startCountdown();
@@ -1682,7 +1704,7 @@ class PlayState extends MusicBeatState
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
-	var nps:Int = 0;
+	public var nps:Int = 0;
 	var maxNPS:Int = 0;
 
 	public static var songRate = 1.5;
@@ -1697,6 +1719,14 @@ class PlayState extends MusicBeatState
 			camHUD.visible = !camHUD.visible;
 
 		wiggleShit.update(333.333333333333); // alien number woah!
+
+		if (SONG.song == 'Pulse')
+		{
+			dad.angle += 0.1;
+			boyfriend.angle -= 0.1;
+		}
+
+		Main.fheoHealth = this.fheoHealth;
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -3175,6 +3205,7 @@ class PlayState extends MusicBeatState
 
 		function goodNoteHit(note:Note, resetMashViolation = true):Void
 			{
+				boyfriend.holdTimer = 0;
 
 				if (mashing != 0)
 					mashing = 0;
@@ -3237,6 +3268,7 @@ class PlayState extends MusicBeatState
 					if (note.noteStyle == 'attack'){
 						fheoHealth--;
 						boyfriend.playAnim('attack', false);
+						dad.playAnim('singUP', false);
 						trace('ANIMAL ABUSE ' + fheoHealth);
 					}
 					
@@ -3446,47 +3478,48 @@ class PlayState extends MusicBeatState
 			gf.dance();
 		}
 
-		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
+		if (!boyfriend.animation.curAnim.name.startsWith("sing") && !boyfriend.animation.curAnim.name.startsWith("attack"))
 		{
 			boyfriend.playAnim('idle');
 		}
-		
+
+		if (boyfriend.animation.curAnim.name.startsWith("attack"))
+		{
+			new FlxTimer().start(0.5, function(tmr:FlxTimer)
+			{
+				boyfriend.playAnim('idle');
+			});
+		}
 		if (!dad.animation.curAnim.name.startsWith("sing"))
 		{
 			dad.dance();
 		}
-
 		if (curSong == 'Problem')
 		{	
 			switch (curBeat)
 			{
-				case 60|99|203: // smol circles
-					FlxG.camera.zoom += 0.3;
+				// there's probably a better way to do this
+				case 59|94|198: // smol circles
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
-				case 16|82: // big circles
-					FlxG.camera.zoom -= 0.3;
+				case 16|77: // big circles
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 3, true, {type: LOOPING});
-				case 150: // big, fast, pingpong circles
-					FlxG.camera.zoom += 0.3;
+				case 145: // big, fast, pingpong circles
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 210, 0, true, 2, true, {type: PINGPONG});
-				case 50: // medium
-					FlxG.camera.zoom -= 0.3;
+				case 45: // medium
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 160, 0, true, 3.1, true, {type: LOOPING});
-				case 95: // fast n' glitche
-					FlxG.camera.zoom += 0.3;
+				case 90: // fast n' glitche
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 1, true, {type: LOOPING});
-				case 186: // sonk speed
-					FlxG.camera.zoom -= 0.3;
+				case 177: // sonk speed
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 1, true, {type: LOOPING});

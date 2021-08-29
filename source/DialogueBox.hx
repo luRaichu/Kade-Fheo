@@ -3,15 +3,15 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.text.FlxTypeText;
-import flixel.graphics.frames.FlxAtlasFrames;
+//import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
-import flixel.input.FlxKeyManager;
+//import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import flixel.addons.effects.chainable.FlxEffectSprite;
-import flixel.addons.effects.chainable.FlxWaveEffect;
-import flixel.tweens.FlxEase;
+//import flixel.addons.effects.chainable.FlxEffectSprite;
+//import flixel.addons.effects.chainable.FlxWaveEffect;
+//import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import WiggleEffect.WiggleEffectType;
 
@@ -81,39 +81,11 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'senpai':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
-				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
-			case 'roses':
-				hasDialog = true;
-				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
-
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
-				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [4], "", 24);
-
-			case 'thorns':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-blue');
-				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
-				box.animation.addByIndices('normal', 'Spirit Textbox spawn', [11], "", 24);
-
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
-				face.setGraphicSize(Std.int(face.width * 6));
-				add(face);
-			case 'food':
+			case 'food' | 'loiter':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-blue');
 				box.animation.addByPrefix('normalOpen', 'Feo Textbox spawn instance', 24, false);
 				box.animation.addByIndices('normal', 'Feo Textbox spawn instance', [11], "", 24);
-
-			case 'loiter':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-blue');
-				box.animation.addByPrefix('normalOpen', 'Feo Textbox spawn instance', 60, false);
-				box.animation.addByIndices('normal', 'Feo Textbox spawn instance', [11], "", 60);
 
 			case 'problem':
 				hasDialog = true;
@@ -126,6 +98,11 @@ class DialogueBox extends FlxSpriteGroup
 		    	wigglegaming.waveSpeed = 0.0001;
 				box.shader = wigglegaming.shader;
 				tweengaming = FlxTween.circularMotion(box, box.x, box.y, 10, 10, true, 3, true, {type: LOOPING});
+			case 'fallen' | 'suffocating' | 'wish':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-blue');
+				box.animation.addByPrefix('normalOpen', 'Feo Textbox spawn instance', 24, false);
+				box.animation.addByIndices('normal', 'Feo Textbox spawn instance', [11], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -243,19 +220,36 @@ class DialogueBox extends FlxSpriteGroup
 		// HARD CODING CUZ IM STUPDI
 		if (PlayState.SONG.song.toLowerCase() == 'food')
 		{
-			//portraitLeft.color = FlxColor.BLACK;
+			swagDialogue.color = FlxColor.WHITE;
+			dropText.color = FlxColor.BLACK;
+		}
+		if (PlayState.SONG.song.toLowerCase() == 'fallen')
+		{
+			swagDialogue.color = FlxColor.WHITE;
+			dropText.color = FlxColor.BLACK;
+		}
+		if (PlayState.SONG.song.toLowerCase() == 'suffocating')
+		{
+			swagDialogue.color = FlxColor.WHITE;
+			dropText.color = FlxColor.BLACK;
+		}
+		if (PlayState.SONG.song.toLowerCase() == 'wish')
+		{
+			swagDialogue.color = FlxColor.WHITE;
+			dropText.color = FlxColor.BLACK;
+		}
+		if (PlayState.SONG.song.toLowerCase() == 'food')
+		{
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}
 		if (PlayState.SONG.song.toLowerCase() == 'loiter')
 		{
-			//portraitLeft.color = FlxColor.BLACK;
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}
 		if (PlayState.SONG.song.toLowerCase() == 'problem')
 		{
-			//portraitLeft.color = FlxColor.BLACK;
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}

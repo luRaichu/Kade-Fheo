@@ -94,6 +94,13 @@ class Note extends FlxSprite
 				{
 					case 'attack':
 						lePath = 'ATTACK_notes';
+						if (Date.now().getDate() == 1)
+						{
+							if (Date.now().getMonth() == 3)
+							{
+								lePath = 'BURGER_notes';
+							}
+						}
 					default:
 						lePath = 'NOTE_assets';
 					

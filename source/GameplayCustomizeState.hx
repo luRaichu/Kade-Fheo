@@ -4,11 +4,11 @@ import flixel.math.FlxPoint;
 import flixel.FlxObject;
 #if desktop
 import Discord.DiscordClient;
-import sys.thread.Thread;
+//import sys.thread.Thread;
 #end
 
 import flixel.group.FlxGroup.FlxTypedGroup;
-import openfl.ui.Keyboard;
+//import openfl.ui.Keyboard;
 import flixel.FlxSprite;
 import flixel.FlxG;
 

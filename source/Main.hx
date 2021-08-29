@@ -1,13 +1,13 @@
 package;
 
-import openfl.display.BlendMode;
-import openfl.text.TextFormat;
-import openfl.display.Application;
+//import openfl.display.BlendMode;
+//import openfl.text.TextFormat;
+//import openfl.display.Application;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
-import openfl.Assets;
+//import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -24,6 +24,8 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	public static var watermarks = false; // Whether to put Vs. Fheo liteartly anywhere
+
+	public static var fheoHealth = 5; // Fheo's health, decreases every time an attack note is hit
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
