@@ -3,3 +3,4 @@ Loiter:fheo-angry:1
 Problem:fheo-demon:1
 Fallen:fheo-dead:2
 Suffocating:fheo-dead:2
+Wish:fheo-dead:2

@@ -67,6 +67,7 @@ class DialogueBox extends FlxSpriteGroup
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFFFFFFF);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
+		bgFade.screenCenter();
 		add(bgFade);
 
 		new FlxTimer().start(0.83, function(tmr:FlxTimer)

@@ -416,6 +416,13 @@ class PlayState extends MusicBeatState
 				else{
 					dialogue = CoolUtil.coolTextFile(Paths.txt('suffocating/suffoUnSusWords'));
 				}
+			case 'wish':
+				if (Main.fheoHealth < 5){
+					dialogue = CoolUtil.coolTextFile(Paths.txt('wish/wishEvil'));
+				}
+				else{
+					dialogue = CoolUtil.coolTextFile(Paths.txt('wish/wishOk'));
+				}
 		}
 
 
@@ -1044,6 +1051,8 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'suffocating':
 					schoolIntro(doof);
+				case 'wish':
+					schoolIntro(doof);
 				default:
 					startCountdown();
 			}
@@ -1072,14 +1081,6 @@ class PlayState extends MusicBeatState
 		var red:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
 		red.scrollFactor.set();
 
-		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
-		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
-		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
-		senpaiEvil.scrollFactor.set();
-		senpaiEvil.updateHitbox();
-		senpaiEvil.screenCenter();
-
 		if (SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns')
 		{
 			remove(black);
@@ -1106,6 +1107,13 @@ class PlayState extends MusicBeatState
 
 					if (SONG.song.toLowerCase() == 'thorns')
 					{
+						var senpaiEvil:FlxSprite = new FlxSprite();
+						senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
+						senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
+						senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
+						senpaiEvil.scrollFactor.set();
+						senpaiEvil.updateHitbox();
+						senpaiEvil.screenCenter();
 						add(senpaiEvil);
 						senpaiEvil.alpha = 0;
 						new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
