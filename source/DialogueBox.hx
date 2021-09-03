@@ -147,6 +147,17 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.scrollFactor.set();
 				add(portraitLeft);
 				portraitLeft.visible = false;
+			case 'fallen' | 'suffocating' | 'wish':
+				portraitLeft = new FlxSprite(10, 160);
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/deadPortrait');
+				portraitLeft.animation.addByPrefix('enter', 'deadPortrait', 60, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.8));
+				portraitLeft.antialiasing = true;
+				portraitLeft.updateHitbox();
+				portraitLeft.scrollFactor.set();
+				add(portraitLeft);
+				portraitLeft.visible = false;
+
 
 		}
 

@@ -125,6 +125,8 @@ class PlayState extends MusicBeatState
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
 
+	public var doof:DialogueBox;
+
 	public static var rep:Replay;
 	public static var loadRep:Bool = false;
 
@@ -137,8 +139,6 @@ class PlayState extends MusicBeatState
 
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
-
-	public var attacking:Bool = false;
 	
 	#if desktop
 	// Discord RPC variables
@@ -367,9 +367,17 @@ class PlayState extends MusicBeatState
 
 		#if desktop
 		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
+		if (FlxG.save.data.esrb = true)
+		{
+			Helldialogue = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
+		}
 		#end
 		#if !desktop
 		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, whatever your name is."];
+		if (FlxG.save.data.esrb = true)
+		{
+			Helldialogue = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, whatever your name is."];
+		}
 		#end
 		
 		var fheoDiags;
@@ -853,7 +861,7 @@ class PlayState extends MusicBeatState
 			// FlxG.watch.addQuick('Queued',inputsQueued);
 		}
 
-		var doof:DialogueBox = new DialogueBox(false, dialogue);
+		doof = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
 		doof.scrollFactor.set();
@@ -2425,16 +2433,21 @@ class PlayState extends MusicBeatState
 									if (daNote.mustPress)
 									{
 										if (daNote.noteStyle != 'attack'){
-										if (!daNote.isSustainNote)
-										{
-											health -= 0.075;
-											noteMiss(daNote.noteData, daNote);
-										}
-										else if (daNote.isSustainNote)
-										{
-											health -= 0.035;
-										}
-										vocals.volume = 0;
+											
+											if (!daNote.isSustainNote)
+											{
+												if (daNote.noteStyle != 'attack'){
+													health -= 0.075;
+												}
+												noteMiss(daNote.noteData, daNote);
+											}
+											else if (daNote.isSustainNote)
+											{
+												if (daNote.noteStyle != 'attack'){
+													health -= 0.035;
+												}
+											}
+											vocals.volume = 0;
 										}
 									}
 								}		
@@ -2977,7 +2990,7 @@ class PlayState extends MusicBeatState
 							for (shit in 0...pressArray.length)
 								{ // if a direction is hit that shouldn't be
 									if (pressArray[shit] && !directionList.contains(shit))
-										noteMiss(shit, null);
+											noteMiss(shit, null);
 								}
 					}
 				for (coolNote in possibleNotes)
@@ -3009,7 +3022,7 @@ class PlayState extends MusicBeatState
 						{
 							trace('mash violations ' + mashViolations);
 							scoreTxt.color = FlxColor.RED;
-							noteMiss(0,null);
+							//noteMiss(0,null);
 						}
 						else
 							mashViolations++;
@@ -3071,45 +3084,45 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.stunned)
 		{
 			if (daNote.noteStyle != 'attack'){
-			health -= 0.04;
-			if (combo > 5 && gf.animOffsets.exists('sad'))
-			{
-				gf.playAnim('sad');
-			}
-			combo = 0;
-			misses++;
+				health -= 0.04;
+				if (combo > 5 && gf.animOffsets.exists('sad'))
+				{
+					gf.playAnim('sad');
+				}
+				combo = 0;
+				misses++;
 
-			//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
-			//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
+				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
+				//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
 
-			if (FlxG.save.data.accuracyMod == 1)
-				totalNotesHit -= 1;
+				if (FlxG.save.data.accuracyMod == 1)
+					totalNotesHit -= 1;
 
-			songScore -= 10;
+				songScore -= 10;
 
-			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
+				// FlxG.log.add('played imss note');
 
-			switch (direction)
-			{
-				case 0:
-					boyfriend.playAnim('singLEFTmiss', true);
-				case 1:
-					boyfriend.playAnim('singDOWNmiss', true);
-				case 2:
-					boyfriend.playAnim('singUPmiss', true);
-				case 3:
-					boyfriend.playAnim('singRIGHTmiss', true);
-			}
+				switch (direction)
+				{
+					case 0:
+						boyfriend.playAnim('singLEFTmiss', true);
+					case 1:
+						boyfriend.playAnim('singDOWNmiss', true);
+					case 2:
+						boyfriend.playAnim('singUPmiss', true);
+					case 3:
+						boyfriend.playAnim('singRIGHTmiss', true);
+				}
 
-			#if windows
-			if (luaModchart != null)
-				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
-			#end
+				#if windows
+				if (luaModchart != null)
+					luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+				#end
 
 
-			updateAccuracy();
+				updateAccuracy();
 			}
 		}
 	}
@@ -3502,7 +3515,14 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 		}
-		if (curSong == 'Problem')
+		if (curSong == 'Wish' && curBeat == 193)
+		{
+			//if (doof != null)
+			inCutscene = true;
+			add(doof);
+			trace('FUNNY THING');
+		}
+		if (curSong == 'Problem')//193
 		{	
 			switch (curBeat)
 			{

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="deadPortrait.png">
+	<!-- Created with Adobe Animate version 16.0.1.119 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="deadPortrait0000" x="8" y="8" width="606" height="409" frameX="0" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0001" x="8" y="425" width="606" height="409" frameX="-21" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0002" x="8" y="425" width="606" height="409" frameX="-40" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0003" x="8" y="842" width="606" height="409" frameX="-58" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0004" x="8" y="842" width="606" height="409" frameX="-73" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0005" x="8" y="842" width="606" height="409" frameX="-87" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0006" x="8" y="425" width="606" height="409" frameX="-100" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0007" x="8" y="842" width="606" height="409" frameX="-111" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0008" x="8" y="842" width="606" height="409" frameX="-120" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0009" x="8" y="842" width="606" height="409" frameX="-127" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0010" x="8" y="425" width="606" height="409" frameX="-133" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0011" x="8" y="842" width="606" height="409" frameX="-137" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0012" x="8" y="842" width="606" height="409" frameX="-140" frameY="0" frameWidth="747" frameHeight="409"/>
+	<SubTexture name="deadPortrait0013" x="8" y="1259" width="606" height="409" frameX="-141" frameY="0" frameWidth="747" frameHeight="409"/>
+</TextureAtlas>

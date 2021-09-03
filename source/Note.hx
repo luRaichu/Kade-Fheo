@@ -157,6 +157,7 @@ class Note extends FlxSprite
 			alpha = 0.6;
 
 			x += width / 2;
+			y -= 26;
 
 			switch (noteData)
 			{

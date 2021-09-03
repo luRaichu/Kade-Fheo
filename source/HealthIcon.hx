@@ -17,6 +17,7 @@ class HealthIcon extends FlxSprite
 
 		antialiasing = true;
 		animation.add('bf', [0, 1], 0, false, isPlayer);
+		animation.add('gf', [16, 16], 0, false, isPlayer);
 		animation.add('face', [10, 11], 0, false, isPlayer);
 		animation.add('dad', [12, 13], 0, false, isPlayer);
 		animation.add('bf-old', [14, 15], 0, false, isPlayer);
@@ -25,7 +26,7 @@ class HealthIcon extends FlxSprite
 		animation.add('fheo-angry', [28, 29], 0, false, isPlayer);
 		animation.add('fheo-demon', [30, 31], 0, false, isPlayer);
 		animation.add('bf-scare', [0, 1], 0, false, isPlayer);
-		animation.add('fheo-dead', [24, 25], 0, false, isPlayer);
+		animation.add('fheo-dead', [32, 33], 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();

@@ -1,6 +1,6 @@
 package;
 
-//import flixel.FlxG;
+import flixel.FlxG;
 import flixel.FlxSprite;
 //import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -17,6 +17,9 @@ class Character extends FlxSprite
 
 	public var holdTimer:Float = 0;
 
+	public var bfSheet:String = 'BOYFRIEND';
+	public var bfDeadSheet:String = 'BF_DEAD';
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -27,6 +30,12 @@ class Character extends FlxSprite
 
 		var tex:FlxAtlasFrames;
 		antialiasing = true;
+
+		if (FlxG.save.data.esrb = true)
+		{
+			bfSheet = 'BOYFRIEND_E';
+			bfDeadSheet = 'BF_DEAD_CLEAN';
+		}
 
 		switch (curCharacter)
 		{
@@ -196,7 +205,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'bf':
-				var tex = Paths.getSparrowAtlas('BOYFRIEND');
+				var tex = Paths.getSparrowAtlas(bfSheet);
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
@@ -231,13 +240,19 @@ class Character extends FlxSprite
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
 				addOffset('scared', -4);
-				addOffset('attack', 1017, 270);
-
+				if (FlxG.save.data.esrb = false)
+				{
+					addOffset('attack', 1017, 270);
+				}
+				else
+				{
+					addOffset('attack', 738, 270);
+				}
 				playAnim('idle');
 
 				flipX = true;
 			case 'bf-dead':
-				var tex = Paths.getSparrowAtlas('BF_DEAD');
+				var tex = Paths.getSparrowAtlas(bfDeadSheet);
 				frames = tex;
 
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
@@ -291,7 +306,7 @@ class Character extends FlxSprite
 
 			case 'bf-scare':
 
-				frames = Paths.getSparrowAtlas('BOYFRIEND');
+				frames = Paths.getSparrowAtlas(bfSheet);
 				
 				animation.addByPrefix('idle', 'BF idle shaking', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP', 60, false);
