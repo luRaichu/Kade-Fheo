@@ -3290,6 +3290,7 @@ class PlayState extends MusicBeatState
 						fheoHealth--;
 						boyfriend.playAnim('attack', false);
 						dad.playAnim('singUP', false);
+						FlxG.sound.play(Paths.sound('beep_hit'));
 						trace('ANIMAL ABUSE ' + fheoHealth);
 					}
 					
