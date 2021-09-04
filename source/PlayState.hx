@@ -1746,8 +1746,7 @@ class PlayState extends MusicBeatState
 
 		Main.fheoHealth = this.fheoHealth;
 
-		//#if windows
-		/*
+		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
 		{
 			luaModchart.setVar('songPos',Conductor.songPosition);
@@ -1761,9 +1760,9 @@ class PlayState extends MusicBeatState
 				i.update(elapsed);
 			}
 
-			trace(FlxG.save.data.esrb)
+			trace(FlxG.save.data.esrb);
 
-			/*for (i in 0...strumLineNotes.length) {
+			for (i in 0...strumLineNotes.length) {
 				var member = strumLineNotes.members[i];
 				member.x = luaModchart.getVar("strum" + i + "X", "float");
 				member.y = luaModchart.getVar("strum" + i + "Y", "float");
@@ -1801,9 +1800,9 @@ class PlayState extends MusicBeatState
 				if (i <= playerStrums.length)
 					playerStrums.members[i].visible = p2;
 			}
-		}*/
+		}
 
-		//#end
+		#end
 
 		// reverse iterate to remove oldest notes first and not invalidate the iteration
 		// stop iteration as soon as a note is not removed
@@ -2582,8 +2581,8 @@ class PlayState extends MusicBeatState
 
 		switch(SONG.song.toLowerCase())
 		{
-			case 'problem':
-				LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm",new PlayState()));
+			/*case 'problem':
+				LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm",new PlayState()));*/
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 				}
