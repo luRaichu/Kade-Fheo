@@ -1732,7 +1732,9 @@ class PlayState extends MusicBeatState
 		#end
 
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ZERO)
+		{
 			camHUD.visible = !camHUD.visible;
+		}
 
 		wiggleShit.update(333.333333333333); // alien number woah!
 
@@ -1744,7 +1746,8 @@ class PlayState extends MusicBeatState
 
 		Main.fheoHealth = this.fheoHealth;
 
-		#if windows
+		//#if windows
+		/*
 		if (executeModchart && luaModchart != null && songStarted)
 		{
 			luaModchart.setVar('songPos',Conductor.songPosition);
@@ -1765,10 +1768,10 @@ class PlayState extends MusicBeatState
 				member.x = luaModchart.getVar("strum" + i + "X", "float");
 				member.y = luaModchart.getVar("strum" + i + "Y", "float");
 				member.angle = luaModchart.getVar("strum" + i + "Angle", "float");
-			}*/
+			}
 
-			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
-			camHUD.angle = luaModchart.getVar('camHudAngle','float');
+			//FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
+			//camHUD.angle = luaModchart.getVar('camHudAngle','float');
 
 			if (luaModchart.getVar("showOnlyStrums",'bool'))
 			{
@@ -1798,9 +1801,9 @@ class PlayState extends MusicBeatState
 				if (i <= playerStrums.length)
 					playerStrums.members[i].visible = p2;
 			}
-		}
+		}*/
 
-		#end
+		//#end
 
 		// reverse iterate to remove oldest notes first and not invalidate the iteration
 		// stop iteration as soon as a note is not removed
