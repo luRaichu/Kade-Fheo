@@ -59,7 +59,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'loiter':
 				FlxG.sound.playMusic(Paths.music('Hungry'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
-			case 'problem':
+			case 'problematic':
 				FlxG.sound.playMusic(Paths.music('Problematic'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
 		}
@@ -88,7 +88,7 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.addByPrefix('normalOpen', 'Feo Textbox spawn instance', 24, false);
 				box.animation.addByIndices('normal', 'Feo Textbox spawn instance', [11], "", 24);
 
-			case 'problem':
+			case 'problematic':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-hell');
 				box.animation.addByPrefix('normalOpen', 'HELL Textbox spawn instance', 15, false);
@@ -137,7 +137,7 @@ class DialogueBox extends FlxSpriteGroup
 				add(portraitLeft);
 				portraitLeft.visible = false;
 
-			case 'problem':
+			case 'problematic':
 				portraitLeft = new FlxSprite(0, 160);
 				portraitLeft.frames = Paths.getSparrowAtlas('weeb/catAkumaPortrait');
 				portraitLeft.animation.addByPrefix('enter', 'catDemonPortrait', 60, false);
@@ -176,7 +176,7 @@ class DialogueBox extends FlxSpriteGroup
 				add(portraitRight);
 				portraitRight.visible = false;
 
-			case 'problem':
+			case 'problematic':
 				portraitRight = new FlxSprite(720, 190);
 				portraitRight.frames = Paths.getSparrowAtlas('weeb/boyfriendScaredPortrait');
 				portraitRight.animation.addByPrefix('enter', 'bfPortraitScared', 60, false);
@@ -260,7 +260,7 @@ class DialogueBox extends FlxSpriteGroup
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}
-		if (PlayState.SONG.song.toLowerCase() == 'problem')
+		if (PlayState.SONG.song.toLowerCase() == 'problematic')
 		{
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
@@ -286,7 +286,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			remove(dialogue);
 				
-			FlxG.sound.play(Paths.sound('clickText'), 0.8);
+			//FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
 			{

@@ -259,6 +259,13 @@ class PlayState extends MusicBeatState
 
 	private var executeModchart = false;
 
+	public var layer0:FlxSprite;
+	public var layer1:FlxSprite;
+	public var layer2:FlxSprite;
+
+	public var coolEfect:Bool = false;
+	var resyncingVocals:Bool = true;
+
 	// API stuff
 	
 	public function addObject(object:FlxBasic) { add(object); }
@@ -413,7 +420,7 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('food/foodDialogue'));
 			case 'loiter':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('loiter/loiterDialogue'));
-			case 'problem':
+			case 'problematic':
 				dialogue = Helldialogue;
 			case 'fallen':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('fallen/fallenDialogue'));
@@ -539,20 +546,11 @@ class PlayState extends MusicBeatState
 		              
 		                  curStage = 'smog';
 
-		                  /*moveCat = true;
+						  var hellSize:Float = 1.5;
+						  var hellX:Int = -460;
+						  var hellY:Int = -180;
 
-							var rotRateCat = curStep / 9.5;
-							var cat_to_y = -2450 + -Math.sin(rotRateCat * 2) * cat_r * 0.45;
-							var cat_to_x = -330 -Math.cos(rotRateCat) * cat_r;
-
-
-						if (moveCat)
-							{
-								dad.x += (cat_to_x - dad.x) / 12;
-								dad.y += (cat_to_y - dad.y) / 12;
-							}*/
-
-		                  var bg:FlxSprite = new FlxSprite(-170, -140).loadGraphic(Paths.image('fheo/smog'));
+		                  var bg:FlxSprite = new FlxSprite(-180, -140).loadGraphic(Paths.image('fheo/smog'));
 		                  bg.setGraphicSize(2180, 1340);
 		                  bg.antialiasing = true;
 		                  bg.scrollFactor.set(0.6, 0.6);
@@ -566,6 +564,30 @@ class PlayState extends MusicBeatState
 		                  wiggleShit.waveSpeed = 0.0001;
 		                  
 		                  bg.shader = wiggleShit.shader;
+
+						  layer0 = new FlxSprite(hellX, hellY).loadGraphic(Paths.image('fheo/hellLayer0'));
+		                  layer0.setGraphicSize(Std.int(layer0.width * hellSize));
+		                  layer0.updateHitbox();
+		                  layer0.antialiasing = true;
+		                  layer0.scrollFactor.set(0.6, 0.6);
+		                  layer0.active = false;
+		                  add(layer0);
+
+		                  layer1 = new FlxSprite(hellX, hellY).loadGraphic(Paths.image('fheo/hellLayer1'));
+		                  layer1.setGraphicSize(Std.int(layer1.width * hellSize));
+		                  layer1.updateHitbox();
+		                  layer1.antialiasing = true;
+		                  layer1.scrollFactor.set(0.9, 0.9);
+		                  layer1.active = false;
+		                  add(layer1);
+
+		                  layer2 = new FlxSprite(-555, hellY).loadGraphic(Paths.image('fheo/hellLayer2'));
+		                  layer2.setGraphicSize(Std.int(layer2.width * hellSize));
+		                  layer2.updateHitbox();
+		                  layer2.antialiasing = true;
+		                  layer2.scrollFactor.set(1.5, 1.5);
+		                  layer2.active = false;
+		                  add(layer2);
 
 		                  var plank:FlxSprite = new FlxSprite(700, 700).loadGraphic(Paths.image('fheo/plank')); 
 		                  //bg.setGraphicSize(2180, 1340);
@@ -594,48 +616,6 @@ class PlayState extends MusicBeatState
 		                  pulse.shader = wiggleShit.shader;*/
 
        			}
-		        case 'hell':
-		      	{
-		                  defaultCamZoom = 0.8;
-
-		                  var layer0:FlxSprite = new FlxSprite(-300, -50).loadGraphic(Paths.image('fheo/hellLayer0'));
-		                  layer0.setGraphicSize(Std.int(layer0.width * 1.2)); // RENEMBER: ASTERICK IS FOR MULTIPLICATION!
-		                  layer0.updateHitbox();
-		                  layer0.antialiasing = true;
-		                  layer0.scrollFactor.set(0.6, 0.6);
-		                  layer0.active = false;
-		                  add(layer0);
-
-		                  wiggleShit.effectType = WiggleEffectType.HEAT_WAVE_HORIZONTAL;
-		                  wiggleShit.waveAmplitude = 0.01;
-		                  wiggleShit.waveFrequency = 30;
-		                  wiggleShit.waveSpeed = 0.0001;
-		                  
-		                  layer0.shader = wiggleShit.shader;
-
-		                  var layer1:FlxSprite = new FlxSprite(-300, -50).loadGraphic(Paths.image('fheo/hellLayer1'));
-		                  layer1.setGraphicSize(Std.int(layer1.width * 1.2));
-		                  layer1.updateHitbox();
-		                  layer1.antialiasing = true;
-		                  layer1.scrollFactor.set(0.9, 0.9);
-		                  layer1.active = false;
-		                  add(layer1);
-
-		                  var plank:FlxSprite = new FlxSprite(700, 700).loadGraphic(Paths.image('fheo/plank')); 
-		                  plank.antialiasing = true;
-		                  plank.scrollFactor.set(0.95, 0.95);
-		                  plank.active = false;
-		                  add(plank);
-
-		                  var layer2:FlxSprite = new FlxSprite(-300, -50).loadGraphic(Paths.image('fheo/hellLayer2'));
-		                  layer2.setGraphicSize(Std.int(layer2.width * 1.2));
-		                  layer2.updateHitbox();
-		                  layer2.antialiasing = true;
-		                  layer2.scrollFactor.set(1.5, 1.5);
-		                  layer2.active = false;
-		                  add(layer2);
-
-              	}
 				case 'wasted':
 				{
 							defaultCamZoom = 0.9;
@@ -1053,7 +1033,7 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'loiter':
 					schoolIntro(doof);
-				case 'problem':
+				case 'problematic':
 					schoolIntro(doof);
 				case 'fallen':
 					schoolIntro(doof);
@@ -1333,10 +1313,15 @@ class PlayState extends MusicBeatState
 
 		if (!paused)
 		{
+			//if (inCutscene == false){
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
+			//}
 		}
 
-		FlxG.sound.music.onComplete = endSong;
+		if (SONG.song.toLowerCase() == 'wish' && isStoryMode) //credit to bob and bosip for this shit
+			FlxG.sound.music.onComplete = fheoFunny;
+		else
+			FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 
 		// Song duration in a float, useful for the time left feature
@@ -1705,16 +1690,22 @@ class PlayState extends MusicBeatState
 
 	function resyncVocals():Void
 	{
-		vocals.pause();
+		if (resyncingVocals) {
+			vocals.pause();
 
-		FlxG.sound.music.play();
-		Conductor.songPosition = FlxG.sound.music.time;
-		vocals.time = Conductor.songPosition;
-		vocals.play();
+			FlxG.sound.music.play();
+			Conductor.songPosition = FlxG.sound.music.time;
+			vocals.time = Conductor.songPosition;
+			vocals.play();
 
-		#if desktop
-		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
-		#end
+			#if desktop
+			DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
+			#end
+		}
+		else {
+			Conductor.songPosition = 0;
+			FlxG.sound.music.time = 0;
+		}
 	}
 
 	private var paused:Bool = false;
@@ -1730,12 +1721,10 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
-
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ZERO)
 		{
 			camHUD.visible = !camHUD.visible;
 		}
-
 		wiggleShit.update(333.333333333333); // alien number woah!
 
 		if (SONG.song == 'Pulse')
@@ -1745,6 +1734,13 @@ class PlayState extends MusicBeatState
 		}
 
 		Main.fheoHealth = this.fheoHealth;
+
+		if (coolEfect == true && layer1.y < 4200)
+		{
+			layer0.alpha -= 0.008;
+			layer2.alpha -= 0.008;
+			layer1.y += 3;
+		}
 
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
@@ -1769,8 +1765,8 @@ class PlayState extends MusicBeatState
 				member.angle = luaModchart.getVar("strum" + i + "Angle", "float");
 			}
 
-			//FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
-			//camHUD.angle = luaModchart.getVar('camHudAngle','float');
+			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
+			camHUD.angle = luaModchart.getVar('camHudAngle','float');
 
 			if (luaModchart.getVar("showOnlyStrums",'bool'))
 			{
@@ -1938,7 +1934,9 @@ class PlayState extends MusicBeatState
 		{
 			if (startedCountdown)
 			{
-				Conductor.songPosition += FlxG.elapsed * 1000;
+				//if (inCutscene == false) {
+				Conductor.songPosition += FlxG.elapsed * 1000; //sussymogus
+				//}
 				if (Conductor.songPosition >= 0)
 					startSong();
 			}
@@ -1946,12 +1944,15 @@ class PlayState extends MusicBeatState
 		else
 		{
 			// Conductor.songPosition = FlxG.sound.music.time;
+			//if (inCutscene == false) {
 			Conductor.songPosition += FlxG.elapsed * 1000;
+			//}
 			/*@:privateAccess
 			{
 				FlxG.sound.music._channel.
 			}*/
-			songPositionBar = Conductor.songPosition;
+			if (resyncingVocals)
+				songPositionBar = Conductor.songPosition;
 
 			if (!paused)
 			{
@@ -2503,7 +2504,6 @@ class PlayState extends MusicBeatState
 			Highscore.saveScore(SONG.song, Math.round(songScore), storyDifficulty);
 			#end
 		}
-
 		if (offsetTesting)
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -2581,8 +2581,8 @@ class PlayState extends MusicBeatState
 
 		switch(SONG.song.toLowerCase())
 		{
-			/*case 'problem':
-				LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm",new PlayState()));*/
+			case 'problematic':
+				LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutescene.webm", new PlayState()));
 			default:
 				LoadingState.loadAndSwitchState(new PlayState());
 				}
@@ -2606,6 +2606,33 @@ class PlayState extends MusicBeatState
 	var timeShown = 0;
 	var currentTimingShown:FlxText = null;
 
+	function fheoFunny():Void
+	{
+		for (i in strumLineNotes)
+			i.visible = false;
+		healthBar.visible = false;
+		healthBarBG.visible = false;
+		iconP2.visible = false;
+		iconP1.visible = false;
+		resyncingVocals = false;
+		camZooming = false;
+		canPause = false;
+		FlxG.sound.music.stop();
+		vocals.stop();
+		var dialogue = CoolUtil.coolTextFile(Paths.txt('wish/lastDialogue'));
+		var doof:DialogueBox = new DialogueBox(false, dialogue);
+		doof.scrollFactor.set();
+		doof.finishThing = endCutscene;
+		doof.cameras = [camHUD];
+		add(doof);
+	}
+	function endCutscene():Void
+	{
+		if (Main.fheoHealth < 5)
+			LoadingState.loadAndSwitchState(new VideoState("assets/videos/badending.webm", new StoryMenuState()));
+		else
+			LoadingState.loadAndSwitchState(new StoryMenuState());
+	}
 	private function popUpScore(daNote:Note):Void
 		{
 			var noteDiff:Float = Math.abs(Conductor.songPosition - daNote.strumTime);
@@ -3485,10 +3512,16 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 
-		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
+		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) //79 is end, 47 is start
 		{
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
+		}
+
+		if (curSong.toLowerCase() == 'wish' && curStep >= 189 && curStep < 316 && camZooming && FlxG.camera.zoom < 1.35 && curBeat % 1 == 0)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.05;
 		}
 
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
@@ -3518,14 +3551,7 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 		}
-		if (curSong == 'Wish' && curBeat == 193)
-		{
-			//if (doof != null)
-			inCutscene = true;
-			add(doof);
-			trace('FUNNY THING');
-		}
-		if (curSong == 'Problem')//193
+		if (curSong == 'Problematic')
 		{	
 			switch (curBeat)
 			{
@@ -3542,6 +3568,7 @@ class PlayState extends MusicBeatState
 					dad.x = 131;
 					dad.y = 313;
 					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 210, 0, true, 2, true, {type: PINGPONG});
+					coolEfect = true;
 				case 45: // medium
 					dad.x = 131;
 					dad.y = 313;
