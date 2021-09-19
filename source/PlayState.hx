@@ -3333,8 +3333,7 @@ class PlayState extends MusicBeatState
 					updateAccuracy();
 				}
 			}
-		
-
+	
 	var fastCarCanDrive:Bool = true;
 
 	function resetFastCar():Void
