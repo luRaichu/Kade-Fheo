@@ -2,7 +2,7 @@ Funny gato mod
 
 To compile, follow the regular FNF compiling guide but install these libraries as well.
 ```
-haxelib install actuate
+haxelib install actuate (not sure why)
 haxelib git extension-webm https://github.com/ThatRozebudDude/extension-webm
 ```
 then after run
