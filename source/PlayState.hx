@@ -440,7 +440,6 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-
 		switch(SONG.stage)
 		{
 			
@@ -581,7 +580,7 @@ class PlayState extends MusicBeatState
 		                  layer1.active = false;
 		                  add(layer1);
 
-		                  layer2 = new FlxSprite(-555, hellY).loadGraphic(Paths.image('fheo/hellLayer2'));
+		                  layer2 = new FlxSprite(-666, hellY).loadGraphic(Paths.image('fheo/hellLayer2'));
 		                  layer2.setGraphicSize(Std.int(layer2.width * hellSize));
 		                  layer2.updateHitbox();
 		                  layer2.antialiasing = true;
@@ -703,17 +702,13 @@ class PlayState extends MusicBeatState
 				dad.x -= 400;
 				dad.y -= -497;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'fheo':
+			case 'fheo'|'fheo-angry':
 				dad.x -= -25;
 				dad.y -= -423;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				camPos.set(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 				//add(evilTrail);
 				//camPos.y += -1000;
 				//tweenCamIn();
-			case 'fheo-angry':
-				dad.x -= -25;
-				dad.y -= -423;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'fheo-demon':
 				dad.x -= 40;
 				dad.y -= -213;
@@ -810,7 +805,7 @@ class PlayState extends MusicBeatState
 			catT = new FlxTrail(dad, null, 5, 7, 0.3, 0.001);
 			catT.color = FlxColor.RED;
 			add(catT);
-			gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
+			gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 150, 0, true, 500, false, {type: PINGPONG});
 			
 		}
 		if (SONG.player2 == 'fheo-dead')
@@ -1860,7 +1855,16 @@ class PlayState extends MusicBeatState
 			else
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
-
+		#if debug
+		if (FlxG.keys.pressed.I)
+		{
+			defaultCamZoom += 0.1;
+		}
+		if (FlxG.keys.pressed.O)
+		{
+			defaultCamZoom -= 0.1;
+		}
+		#end
 		if (FlxG.keys.justPressed.SEVEN)
 		{
 			#if desktop
@@ -2087,6 +2091,16 @@ class PlayState extends MusicBeatState
 				}
 				#end
 				camFollow.setPosition(dad.getMidpoint().x + 150 + offsetX, dad.getMidpoint().y - 100 + offsetY);
+				if (camZooming == true)
+				{
+					switch (dad.curCharacter)
+					{
+						case 'fheo'|'fheo-angry':
+							defaultCamZoom = 1.3;
+						case 'fheo-demon':
+							defaultCamZoom = 1.2;
+					}
+				}
 				#if windows
 				if (luaModchart != null)
 					luaModchart.executeState('playerTwoTurn', []);
@@ -2103,6 +2117,12 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
+					case 'fheo'|'fheo-angry'|'fheo-demon':
+						if (camZooming)
+						{
+							camFollow.x = dad.getMidpoint().x;
+							camFollow.y = dad.getMidpoint().y;
+						}
 				}
 
 				if (dad.curCharacter == 'mom')
@@ -2121,7 +2141,16 @@ class PlayState extends MusicBeatState
 				}
 				#end
 				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX, boyfriend.getMidpoint().y - 100 + offsetY);
-
+				if (camZooming == true)
+				{
+					switch (dad.curCharacter)
+					{
+						case 'fheo'|'fheo-angry':
+							defaultCamZoom = 0.9;
+						case 'fheo-demon':
+							defaultCamZoom = 0.7;
+					}
+				}
 				#if windows
 				if (luaModchart != null)
 					luaModchart.executeState('playerOneTurn', []);
@@ -2181,19 +2210,6 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new PlayState());
 			}
 		}
-
-
-
-
-		// TWEENING BULLSHIT
-
-
-
-
-
-
-
-
 		// better streaming of shit
 
 		// RESET = Quick Game Over Screen
@@ -2202,9 +2218,8 @@ class PlayState extends MusicBeatState
 			health = 0;
 			trace("RESET = True");
 		}
-
 		// CHEAT = brandon's a pussy
-		if (FlxG.keys.justPressed.L)
+		if (controls.CHEAT)
 		{
 			health += 1;
 			trace("Stop cheating!!!");
@@ -2631,7 +2646,7 @@ class PlayState extends MusicBeatState
 		if (Main.fheoHealth < 5)
 			LoadingState.loadAndSwitchState(new VideoState("assets/videos/badending.webm", new StoryMenuState()));
 		else
-			LoadingState.loadAndSwitchState(new StoryMenuState());
+			LoadingState.loadAndSwitchState(new CreditsState());
 	}
 	private function popUpScore(daNote:Note):Void
 		{
@@ -2647,7 +2662,6 @@ class PlayState extends MusicBeatState
 			coolText.x = FlxG.width * 0.55;
 			coolText.y -= 350;
 			coolText.cameras = [camHUD];
-			//
 	
 			var rating:FlxSprite = new FlxSprite();
 			var score:Float = 350;
@@ -3448,13 +3462,6 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 		#end
-
-		if (dad.curCharacter == 'spooky' && curStep % 4 == 2)
-		{
-			// dad.dance();
-		}
-
-
 		// yes this updates every step.
 		// yes this is bad
 		// but i'm doing it to update misses and accuracy
@@ -3511,13 +3518,18 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 
-		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) //79 is end, 47 is start
+		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
 
 		if (curSong.toLowerCase() == 'wish' && curStep >= 189 && curStep < 316 && camZooming && FlxG.camera.zoom < 1.35 && curBeat % 1 == 0)
+		{
+			FlxG.camera.zoom += 0.025;
+			camHUD.zoom += 0.05;
+		}
+		if (curSong.toLowerCase() == 'problematic' && curStep >= 703 && curStep < 951 && camZooming && FlxG.camera.zoom < 1.35 && curBeat % 1 == 0)
 		{
 			FlxG.camera.zoom += 0.025;
 			camHUD.zoom += 0.05;
@@ -3550,37 +3562,9 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 		}
-		if (curSong == 'Problematic')
+		if (curSong == 'Problematic' && curBeat > 175)
 		{	
-			switch (curBeat)
-			{
-				// there's probably a better way to do this
-				case 59|94|198: // smol circles
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 3, true, {type: LOOPING});
-				case 16|77: // big circles
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 3, true, {type: LOOPING});
-				case 145: // big, fast, pingpong circles
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 210, 0, true, 2, true, {type: PINGPONG});
-					coolEfect = true;
-				case 45: // medium
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 160, 0, true, 3.1, true, {type: LOOPING});
-				case 90: // fast n' glitche
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 100, 0, true, 1, true, {type: LOOPING});
-				case 177: // sonk speed
-					dad.x = 131;
-					dad.y = 313;
-					gatoTween = FlxTween.circularMotion(dad, dad.x, dad.y, 200, 0, true, 1, true, {type: LOOPING});
-			}
+			coolEfect = true;
 		}
 
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)

@@ -204,8 +204,6 @@ class ChartingState extends MusicBeatState
 		add(blackBorder);
 		add(snapText);
 
-
-
 		super.create();
 	}
 
@@ -1505,8 +1503,15 @@ class ChartingState extends MusicBeatState
 		var json = {
 			"song": _song
 		};
+		var difficulty:String = "";
 
-		var data:String = Json.stringify(json);
+		if (PlayState.storyDifficulty == 0)
+			difficulty = '-easy';
+
+		if (PlayState.storyDifficulty == 2)
+			difficulty = '-hard';
+
+		var data:String = Json.stringify(json, "\t");
 
 		if ((data != null) && (data.length > 0))
 		{
@@ -1514,7 +1519,10 @@ class ChartingState extends MusicBeatState
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(data.trim(), _song.song.toLowerCase() + ".json");
+			if (difficulty == "")
+				_file.save(data.trim(), _song.song.toLowerCase() + ".json");
+			else
+				_file.save(data.trim(), _song.song.toLowerCase() + difficulty + ".json");
 		}
 	}
 

@@ -28,6 +28,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
+	//if (FlxG.save.data.beatGood)
 	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
@@ -52,6 +53,10 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+		if (FlxG.save.data.beatGood)
+		{
+			optionShit = ['story mode', 'freeplay', 'credits', 'options'];
+		}
 		if (!FlxG.sound.music.playing)
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -111,7 +116,6 @@ class MainMenuState extends MusicBeatState
 
 		// NG.core.calls.event.logEvent('swag').send();
 
-
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
 		else
@@ -130,7 +134,6 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-
 		if (!selectedSomethin)
 		{
 			if (controls.UP_P)
@@ -221,11 +224,11 @@ class MainMenuState extends MusicBeatState
 				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
-
 				trace("Freeplay Menu Selected");
-
 			case 'options':
 				FlxG.switchState(new OptionsMenu());
+			case 'credits':
+				LoadingState.loadAndSwitchState(new CreditsState());
 		}
 	}
 

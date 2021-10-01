@@ -12,7 +12,7 @@ class KadeEngineData
 			FlxG.save.data.downscroll = false;
 
 		if (FlxG.save.data.esrb == null)
-			FlxG.save.data.esrb = true;
+			FlxG.save.data.esrb = false;
 
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
@@ -74,6 +74,9 @@ class KadeEngineData
 		
 		if (FlxG.save.data.botplay == null)
 			FlxG.save.data.botplay = false;
+
+		if (FlxG.save.data.beatGood == null)
+			FlxG.save.data.beatGood = false;
 
 		Conductor.recalculateTimings();
 

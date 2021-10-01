@@ -139,7 +139,8 @@ class AgeRatingOption extends Option
 
 	private override function updateDisplay():String
 	{
-		return FlxG.save.data.esrb ? "Kids Mode On" : "Kids Mode Off"; // i'm a retard
+		trace('Kids Mode: ' + FlxG.save.data.esrb);
+		return FlxG.save.data.esrb ? "Kids Mode ON" : "Kids Mode Off";
 	}
 }
 
