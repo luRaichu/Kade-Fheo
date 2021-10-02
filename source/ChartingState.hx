@@ -64,7 +64,7 @@ class ChartingState extends MusicBeatState
 	var amountSteps:Int = 0;
 	var bullshitUI:FlxGroup;
 	var noteStyle:Int = 0;
-	var styles:Array<String> = ['normal', 'attack'];
+	var styles:Array<String> = ['normal', 'attack', 'missing'];
 
 	var writingNotesText:FlxText;
 	var highlight:FlxSprite;

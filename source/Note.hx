@@ -103,6 +103,8 @@ class Note extends FlxSprite
 						}
 					default:
 						lePath = 'NOTE_assets';
+					case 'missing':
+						lePath = 'MISSING_notes';
 					
 				}
 				frames = Paths.getSparrowAtlas(lePath);
