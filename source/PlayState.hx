@@ -1717,6 +1717,10 @@ class PlayState extends MusicBeatState
 
 	public static var songRate = 1.5;
 
+	var R = 102;
+	var G = 255;
+	var B = 51;
+
 	override public function update(elapsed:Float)
 	{
 		#if !debug
@@ -1748,7 +1752,20 @@ class PlayState extends MusicBeatState
 		}
 		if (drainHP == true)
 		{
+			if (R < 255)
+			{
+				R++;
+			}
+			if (G > 0)
+			{
+				G--;
+			}
+			if (B < 255)
+			{
+				B++;
+			}
 			health -= 0.01;
+			healthBar.createFilledBar(0xFFFF0000, FlxColor.fromRGB(R, G, B));
 		}
 		#if windows
 		if (executeModchart && luaModchart != null && songStarted)
