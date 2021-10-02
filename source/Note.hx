@@ -157,7 +157,6 @@ class Note extends FlxSprite
 			alpha = 0.6;
 
 			x += width / 2;
-			y -= 26;
 
 			switch (noteData)
 			{
@@ -173,7 +172,8 @@ class Note extends FlxSprite
 
 			updateHitbox();
 
-			x -= width / 2;
+			x -= width / 1.9;
+			y -= 4200;
 
 			if (PlayState.curStage.startsWith('school'))
 				x += 30;
@@ -199,6 +199,7 @@ class Note extends FlxSprite
 					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 				prevNote.updateHitbox();
 				// prevNote.setGraphicSize();
+				
 			}
 		}
 	}

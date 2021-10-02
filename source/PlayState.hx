@@ -2310,10 +2310,14 @@ class PlayState extends MusicBeatState
 							if(daNote.isSustainNote)
 							{
 								// Remember = minus makes notes go up, plus makes them go down
-								if(daNote.animation.curAnim.name.endsWith('end') && daNote.prevNote != null)
-									daNote.y += daNote.prevNote.height;
+								if (daNote.animation.curAnim.name.endsWith("end") && daNote.prevNote != null)
+								{
+									daNote.y += daNote.prevNote.height - 64;
+								}
 								else
+								{
 									daNote.y += daNote.height / 2;
+								}
 
 								// If not in botplay, only clip sustain notes when properly hit, botplay gets to clip it everytime
 								if(!FlxG.save.data.botplay)
@@ -2430,6 +2434,7 @@ class PlayState extends MusicBeatState
 
 					if (daNote.isSustainNote)
 						daNote.x += daNote.width / 2 + 17;
+					
 					
 					//daNote.y -= (((curStage != 'auditorHell' && FlxG.save.data.downscroll) ? 185 : 65 ) : 0);
 
