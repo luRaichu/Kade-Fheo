@@ -374,7 +374,7 @@ class PlayState extends MusicBeatState
 
 		#if desktop
 		var Helldialogue:Array<String> = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family, bitch.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
-		if (FlxG.save.data.esrb = true)
+		if (FlxG.save.data.esrb == true)
 		{
 			Helldialogue = [":dad:That's it.", ":bf:bee?", ":dad:I've had enough.", ":bf:skee?", ":dad:I belong to the dearest family.", ":bf:BAAAAP!?", ":dad:Don't say I didnt warn ya.", ":bf:beep...", ":dad:Oh, and, by the way...", ":dad:Good luck beating this, " + getUsername() + "."];
 		}

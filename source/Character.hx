@@ -31,7 +31,7 @@ class Character extends FlxSprite
 		var tex:FlxAtlasFrames;
 		antialiasing = true;
 
-		if (FlxG.save.data.esrb = true)
+		if (FlxG.save.data.esrb == true)
 		{
 			bfSheet = 'BOYFRIEND_E';
 			bfDeadSheet = 'BF_DEAD_CLEAN';
