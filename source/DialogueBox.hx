@@ -229,42 +229,9 @@ class DialogueBox extends FlxSpriteGroup
 
 		wigglegaming.update(333.333333333333);
 
-		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'food')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'fallen')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'suffocating')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'wish')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'food')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'loiter')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
-		if (PlayState.SONG.song.toLowerCase() == 'problematic')
-		{
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
+		swagDialogue.color = FlxColor.WHITE;
+		dropText.color = FlxColor.BLACK;
+		
 		dropText.text = swagDialogue.text;
 
 		if (box.animation.curAnim != null)
